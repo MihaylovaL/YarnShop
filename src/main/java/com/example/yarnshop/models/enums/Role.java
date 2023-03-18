@@ -1,5 +1,5 @@
 package com.example.yarnshop.models.enums;
 
-public enum UserRole {
-    ADMIN, User
+public enum Role {
+    ADMIN, USER
 }

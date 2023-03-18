@@ -1,22 +1,41 @@
 package com.example.yarnshop.services;
 
 import com.example.yarnshop.models.dtos.UserRegisterDto;
-import com.example.yarnshop.models.entities.User;
+import com.example.yarnshop.models.entities.Country;
+import com.example.yarnshop.models.entities.YarnShopUser;
 import com.example.yarnshop.repositories.UserRepository;
-import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    private UserRepository userRepository;
-    private ModelMapper modelMapper;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final UserDetailsService userDetailsService;
+    private CountryService countryService;
 
-    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, CountryService countryRepository) {
         this.userRepository = userRepository;
-        this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
+        this.userDetailsService = userDetailsService;
+        this.countryService = countryRepository;
     }
 
+
     public void registerUser(UserRegisterDto userRegisterDto) {
-        userRepository.saveAndFlush(modelMapper.map(userRegisterDto, User.class));
+
+        Country country = countryService.findByName(userRegisterDto.getCountry());
+
+        YarnShopUser user = new YarnShopUser().
+                setUsername(userRegisterDto.getUsername()).
+                setFirstName(userRegisterDto.getFirstName()).
+                setLastName(userRegisterDto.getLastName()).
+                setEmail(userRegisterDto.getEmail()).
+                setPassword(passwordEncoder.encode(userRegisterDto.getPassword()))
+                .setCountry(country);
+
+        userRepository.save(user);
+
     }
 }

@@ -1,6 +1,6 @@
 package com.example.yarnshop.models.dtos;
 
-import com.example.yarnshop.validations.passwordMatcher.PasswordMatch;
+import com.example.yarnshop.models.entities.Country;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -13,7 +13,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@PasswordMatch
 public class UserRegisterDto {
     @NotNull
     @Size(min = 6, max = 15)
@@ -36,4 +35,6 @@ public class UserRegisterDto {
     @NotNull
     @Email
     private String email;
+    @NotNull
+    private String country;
 }

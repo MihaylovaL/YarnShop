@@ -18,7 +18,7 @@ public class Review {
     private Long id;
 
     @ManyToOne
-    private User user;
+    private YarnShopUser user;
 
     @Column(columnDefinition = "TEXT")
     private String comment;
