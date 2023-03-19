@@ -25,15 +25,14 @@ public class UserService {
 
     public void registerUser(UserRegisterDto userRegisterDto) {
 
-        Country country = countryService.findByName(userRegisterDto.getCountry());
 
         YarnShopUser user = new YarnShopUser().
                 setUsername(userRegisterDto.getUsername()).
                 setFirstName(userRegisterDto.getFirstName()).
                 setLastName(userRegisterDto.getLastName()).
                 setEmail(userRegisterDto.getEmail()).
-                setPassword(passwordEncoder.encode(userRegisterDto.getPassword()))
-                .setCountry(country);
+                setPassword(passwordEncoder.encode(userRegisterDto.getPassword())).
+                setCountry(countryService.findByName(userRegisterDto.getCountryId()));
 
         userRepository.save(user);
 

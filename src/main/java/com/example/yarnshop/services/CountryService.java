@@ -4,6 +4,8 @@ import com.example.yarnshop.models.entities.Country;
 import com.example.yarnshop.repositories.CountryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CountryService {
     private CountryRepository countryRepository;
@@ -12,7 +14,12 @@ public class CountryService {
         this.countryRepository = countryRepository;
     }
 
-    public Country findByName(String name){
-        return countryRepository.findByName(name).orElseThrow();
+    public Country findByName(Long countryId){
+        return countryRepository.findById(countryId).orElseThrow();
+    }
+    public List<Country> findAll(){
+        List<Country> all = countryRepository.findAll();
+        return all;
+
     }
 }

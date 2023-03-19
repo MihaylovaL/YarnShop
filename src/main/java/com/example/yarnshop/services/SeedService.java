@@ -52,7 +52,7 @@ public class SeedService {
                     setFirstName("Lora").
                     setLastName("Mihaylova").
                     setPassword(passwordEncoder.encode("admin123")).
-                    setCountry(countryRepository.findByName("Bulgaria").orElseThrow()).
+                    setCountry(countryRepository.findById(1L).orElseThrow()).
                     setRoles(userRoleRepository.findAll());
 
             userRepository.save(adminUser);

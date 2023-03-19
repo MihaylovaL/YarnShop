@@ -36,5 +36,5 @@ public class UserRegisterDto {
     @Email
     private String email;
     @NotNull
-    private String country;
+    private Long countryId;
 }
