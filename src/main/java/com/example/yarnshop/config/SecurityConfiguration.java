@@ -25,21 +25,18 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http,
                                            SecurityContextRepository securityContextRepository) throws Exception {
         http.
-                        authorizeHttpRequests().
-                        requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
-                        requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/images/background.jpg").permitAll().
-
-                        requestMatchers("/pages/users").hasRole(Role.USER.name()).
-
-                        requestMatchers("/pages/admins").hasRole(Role.ADMIN.name()).
+                authorizeHttpRequests().
+                requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
+                requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll().
+                requestMatchers("/pages/users").hasRole(Role.USER.name()).
+                requestMatchers("/pages/admins").hasRole(Role.ADMIN.name()).
                 anyRequest().authenticated().
                 and().
-                        formLogin().
+                formLogin().
                 loginPage("/users/login").
-                        usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
-                passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
-
-                        defaultSuccessUrl("/").
+                usernameParameter("username").
+                passwordParameter("password").
+                defaultSuccessUrl("/index").
                 failureForwardUrl("/users/login-error").
                 and().logout().
                 logoutUrl("/users/logout").
@@ -61,6 +58,7 @@ public class SecurityConfiguration {
     public UserDetailsService userDetailsService(UserRepository userRepository) {
         return new UserDetailService(userRepository);
     }
+
     @Bean
     public SecurityContextRepository securityContextRepository() {
         return new DelegatingSecurityContextRepository(

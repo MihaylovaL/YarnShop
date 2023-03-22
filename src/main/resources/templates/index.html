@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/commons::head"></head>
+<head th:replace="~{fragments/commons}"></head>
 <body>
-<header th:replace="fragments/commons::nav"></header>
 <main>
     <div class="container bg-blur rounded mt-5 ">
         <h1>Welcome to Aranea shop</h1>
         <hr class="my-3 bg-white w-50"/>
 
-        <p class="h4">The application is here for your yarn taste and aims to make crocheting a more social
-            experience. In Aranea shop, you can find hundreds of new yarns, schemes and accessories that people had discovered and
-            then you can add them to your own collection.</p>
+        <p class="h3 text-light m-5  border-bottom">The application is here for your yarn taste and aims to make crocheting a more social
+            experience. In Aranea shop, you can find hundreds of new yarns, schemes and accessories that people had discovered, and
+            then you can add them to your own collection. </p>
         <hr class="my-3 bg-white w-75"/>
 
         <h3>
-            <a class="text-primary" th:href="@{/users/login}">Login</a>
+            <a class="text-center p-lg-4" th:href="@{/users/login}">Login</a>
             if you have an account or
-            <a class="text-primary" th:href="@{/users/register}">Register</a>
+            <a class="text-center" th:href="@{/users/register}">Register</a>
             now and check our deals.
         </h3>
     </div>
 </main>
-<footer th:replace="fragments/commons::footer"></footer>
+<footer></footer>
 </body>
 </html>

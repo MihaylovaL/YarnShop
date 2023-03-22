@@ -54,6 +54,7 @@ public class UserController {
         return "login";
     }
 
+
     @ModelAttribute("userRegisterDto")
     public UserRegisterDto userRegisterDto() {
         return new UserRegisterDto();
