@@ -27,8 +27,7 @@ public class YarnShopUser {
     @Size(min = 4, max = 15)
     private String username;
 
-    @Column(nullable = false, unique = true, length = 10000)
-    @Size(min = 5)
+    @Column(nullable = false, length = 1000)
     private String password;
 
     @Column(nullable = false)

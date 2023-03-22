@@ -4,13 +4,16 @@ import com.example.yarnshop.models.dtos.UserRegisterDto;
 import com.example.yarnshop.models.entities.Country;
 import com.example.yarnshop.services.CountryService;
 import com.example.yarnshop.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -35,9 +38,15 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerNewUser(UserRegisterDto userRegisterDto) {
+    public String registerNewUser(@Valid @ModelAttribute("userRegisterDto") UserRegisterDto userRegisterDto, BindingResult result,
+                                  RedirectAttributes redirectAttributes) {
+        if(result.hasErrors()){
+            redirectAttributes.addFlashAttribute("userRegisterDto", userRegisterDto)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDto", result);
+            return "redirect:register";
+        }
         userService.registerUser(userRegisterDto);
-        return "index";
+        return "login";
     }
 
     @GetMapping("/login")
