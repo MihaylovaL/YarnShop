@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head></head>
+<body>
+<div th:fragment="navbar">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-nav rounded">
+
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto col-12 justify-content-between">
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <!-- Logged users, no mather of the roles -->
+                            <h1 class="text-center mt-2">
+                            <a class="badge badge-pill badge-dark" th:href="@{/pages/all}">All users</a></h1>
+                        </li>
+
+                        <li class="nav-item"sec:authorize="!isAuthenticated()">
+                            <h1 class="text-center mt-2">
+                                <a class="nav-link text-black active h5 modal-dialog-centered" th:href="@{/home}">Aranea shop</a>
+                            </h1>
+                        </li>
+                        <li class="nav-item"  sec:authorize="hasRole('USER')">
+                            <h1 class="text-center mt-2">
+                            <a class="badge badge-pill badge-dark" th:href="@{/pages/users}">Users</a>
+                            </h1>
+                        </li>
+                        <li class="nav-item"  sec:authorize="hasRole('ADMIN')">
+                            <a class="badge badge-pill badge-dark" th:href="@{/pages/admins}">Admins</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <h1 class="text-center mt-2">
+                            <div  class="nav-link text-black active h5">
+                                <div class="text-black">Welcome,
+                                    <th:block sec:authentication="name"></th:block>
+                                    !
+
+                                </div>
+                            </div>
+                            </h1>
+                                <form
+                                        th:method="post"
+                                        th:action="@{/users/logout}">
+
+                                    <div class="row">
+                                        <div class="col col-md-6">
+                                            <div class="button-holder">
+                                                <h1 class="text-center mt-2">
+                                                <input type="submit" value="Logout"/>
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                        </li>
+                        <li class="nav-item"sec:authorize="!isAuthenticated()">
+                            <h1 class="text-center mt-2">
+                            <a class="nav-link text-black active h5 modal-dialog-centered" th:href="@{/users/register}">Register</a>
+                            </h1>
+                        </li>
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
+                            <h1 class="text-center mt-2">
+                            <a class="nav-link text-black active h5 modal-dialog-centered" th:href="@{/users/login}">Login</a>
+                            </h1>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
+</body>
+</html>
