@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head::head}"></head>
+
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}">
+  Navbar
+</div>
+
+<div class="container">
+  <h2 class="text-center text-white">Welcome to Aranea shop</h2>
+
+  <th:block sec:authorize="isAuthenticated()">
+      <h3 class="text-center text-white" th:text="${username}"></h3>
+  </th:block>
+
+</div>
+
+<div>
+    <footer class="footer bg-transparent  py-2">
+        <div class="container-fluid text-center">
+            <div class="footer-background h5 text-dark fixed-bottom">
+                &copy; Spring team 2023. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
