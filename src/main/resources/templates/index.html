@@ -1,27 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/commons::head"></head>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head::head}"></head>
+
+
 <body>
-<header th:replace="fragments/commons::nav"></header>
-<main>
-    <div class="container bg-blur rounded mt-5 ">
-        <h1>Welcome to Aranea shop</h1>
-        <hr class="my-3 bg-white w-50"/>
 
-        <p class="h4">The application is here for your yarn taste and aims to make crocheting a more social
-            experience. In Aranea shop, you can find hundreds of new yarns, schemes and accessories that people had discovered and
-            then you can add them to your own collection.</p>
-        <hr class="my-3 bg-white w-75"/>
+<div th:replace="~{fragments/navbar :: navbar}">
+  Navbar
+</div>
 
-        <h3>
-            <a class="text-primary" href="">Login</a>
-            if you have an account or
-            <a class="text-primary" th:href="@{/users/register}">Register</a>
-            now and check our deals.
-        </h3>
-    </div>
-</main>
-<footer th:replace="fragments/commons::footer"></footer>
+<div class="container">
+  <h2 class="text-center text-white">Welcome to Aranea shop</h2>
+
+  <th:block sec:authorize="isAuthenticated()">
+      <h3 class="text-center text-white" th:text="${username}"></h3>
+  </th:block>
+
+</div>
+
+<div>
+    <footer class="footer bg-transparent  py-2">
+        <div class="container-fluid text-center">
+            <div class="footer-background h5 text-dark fixed-bottom">
+                &copy; Spring team 2023. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</div>
 </body>
 </html>
