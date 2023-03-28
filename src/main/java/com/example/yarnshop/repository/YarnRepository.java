@@ -9,4 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface YarnRepository extends JpaRepository<Yarn, Long> {
+    Optional<Yarn> getYarnById(Long id);
 }

@@ -9,17 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PagesController {
 
-
-    @GetMapping("/")
-    public String home(@AuthenticationPrincipal AppUserDetails appUserDetails, Model model) {
-
-        if (appUserDetails != null) {
-            model.addAttribute("username", appUserDetails.getUsername());
-            model.addAttribute("country", appUserDetails.getCountry());
-        }
-        return "index";
-    }
-
     @GetMapping("/pages/all")
     public String all() {
         return "all";
