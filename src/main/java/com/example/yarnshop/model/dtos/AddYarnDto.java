@@ -1,24 +1,26 @@
 package com.example.yarnshop.model.dtos;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.Length;
 
 import java.math.BigDecimal;
 
 public class AddYarnDto {
-    @NotNull
+
     @Size(min = 5, max = 20)
     private String name;
-    @NotNull
-    private String category;
 
     @NotNull
-    @Size(min = 50, max = 1000)
+    private Long categoryId;
+
+    @NotNull
+    @Min(50)
+    @Max(1000)
     private Integer weight;
 
     @NotNull
-    @Size(min = 50, max = 1000)
+    @Min(50)
+    @Max(1000)
     private Integer length;
 
     @NotNull
@@ -26,7 +28,7 @@ public class AddYarnDto {
     private BigDecimal price;
 
     @NotNull
-    private String country;
+    private Long countryId;
 
     @NotNull
     private Integer size;
@@ -36,7 +38,7 @@ public class AddYarnDto {
 
     @NotNull
     private String color;
-    @NotNull
+
     private String image;
 
     public AddYarnDto() {
@@ -48,15 +50,6 @@ public class AddYarnDto {
 
     public AddYarnDto setName(String name) {
         this.name = name;
-        return this;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public AddYarnDto setCategory(String category) {
-        this.category = category;
         return this;
     }
 
@@ -87,12 +80,21 @@ public class AddYarnDto {
         return this;
     }
 
-    public String getCountry() {
-        return country;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public AddYarnDto setCountry(String country) {
-        this.country = country;
+    public AddYarnDto setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+        return this;
+    }
+
+    public Long getCountryId() {
+        return countryId;
+    }
+
+    public AddYarnDto setCountryId(Long countryId) {
+        this.countryId = countryId;
         return this;
     }
 

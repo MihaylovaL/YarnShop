@@ -11,7 +11,7 @@ public class YarnCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column/*(nullable = false)*/
     @Enumerated(EnumType.ORDINAL)
     private Category category;
 

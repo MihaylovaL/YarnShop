@@ -2,12 +2,15 @@ package com.example.yarnshop.model.entity;
 
 import com.example.yarnshop.model.enums.Category;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import java.math.BigDecimal;
 
@@ -26,11 +29,13 @@ public class Yarn {
     private YarnCategory category;
 
     @Column(nullable = false)
-    @Size(min = 50, max = 1000)
+    @Min(50)
+    @Max(1000)
     private Integer weight;
 
     @Column(nullable = false)
-    @Size(min = 50, max = 1000)
+    @Min(50)
+    @Max(1000)
     private Integer length;
 
     @Column(nullable = false)
@@ -51,7 +56,7 @@ public class Yarn {
 
     @Column(nullable = false)
     private String color;
-    @Column(nullable = false, unique = true)
+    @Column
     private String image;
 
     public Yarn() {

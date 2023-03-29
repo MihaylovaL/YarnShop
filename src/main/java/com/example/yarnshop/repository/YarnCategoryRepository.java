@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface YarnCategoryRepository extends JpaRepository<YarnCategory, Long> {
-    YarnCategory findByCategory(Category category);
+    YarnCategory findYarnCategoryById(Long id);
 }

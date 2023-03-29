@@ -29,32 +29,8 @@
                         </li>
                         <li class="nav-item"  sec:authorize="hasRole('ADMIN')">
                             <a class="badge badge-pill badge-dark" th:href="@{/pages/admins}">Admins</a>
-                            <a class="badge badge-pill badge-dark" th:href="@{/products/add}">Add Yarn</a>
-                        </li>
-                        <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <h1 class="text-center mt-2">
-                            <div  class="nav-link text-black active h5">
-                                <div class="text-black">Welcome,
-                                    <th:block sec:authentication="name"></th:block>
-                                    !
-
-                                </div>
-                            </div>
-                            </h1>
-                                <form
-                                        th:method="post"
-                                        th:action="@{/users/logout}">
-
-                                    <div class="row">
-                                        <div class="col col-md-6">
-                                            <div class="button-holder">
-                                                <h1 class="text-center mt-2">
-                                                <input type="submit" value="Logout"/>
-                                                </h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                            <a class="badge badge-pill badge-dark" th:href="@{/yarns/add}">Add Yarn</a>
+                            <a class="badge badge-pill badge-dark" th:href="@{/accessories/add}">Add Accessory</a>
                         </li>
                         <li class="nav-item"sec:authorize="!isAuthenticated()">
                             <h1 class="text-center mt-2">
@@ -66,7 +42,18 @@
                             <a class="nav-link text-black active h5 modal-dialog-centered" th:href="@{/users/login}">Login</a>
                             </h1>
                         </li>
-
+                        <span class="nav-item">
+                        <form th:method="get">
+                            <label class="text-black active h6 align-text-top" th:text="#{navbar_language}" for="lang"></label>
+                            <select
+                                    onchange="this.form.submit()"
+                                    id="lang"
+                                    name="lang">
+                                <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                                <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                            </select>
+                        </form>
+                    </span>
                     </ul>
                 </div>
             </div>
