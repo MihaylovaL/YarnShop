@@ -1,0 +1,43 @@
+package com.example.yarnshop.service;
+
+import com.example.yarnshop.model.dtos.AddToyDto;
+import com.example.yarnshop.model.dtos.view.ToyWithInfoView;
+import com.example.yarnshop.model.entity.Toy;
+import com.example.yarnshop.model.entity.Yarn;
+import com.example.yarnshop.repository.ToyRepository;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ToyService {
+    private final ToyRepository toyRepository;
+    private final ModelMapper modelMapper;
+
+    public ToyService(ToyRepository toyRepository, ModelMapper modelMapper) {
+        this.toyRepository = toyRepository;
+        this.modelMapper = modelMapper;
+    }
+    public void addToy(AddToyDto addToyDto){
+        Toy toy = new Toy();
+
+        toy.setHeight(addToyDto.getHeight());
+        toy.setDescription(addToyDto.getDescription());
+        toy.setPrice(addToyDto.getPrice());
+        toy.setName(addToyDto.getName());
+        toy.setImageUrl(addToyDto.getImage());
+
+        toyRepository.save(toy);
+    }
+
+    public List<Toy> getAllToys(){
+        return toyRepository.findAll();
+    }
+    public ToyWithInfoView getProductInfoById(Long id) {
+        Toy toy = this.toyRepository.findById(id)
+                .orElseThrow(() -> new Error("Product not found!"));
+        return this.modelMapper.map(toy, ToyWithInfoView.class);
+    }
+
+}

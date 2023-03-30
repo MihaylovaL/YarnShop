@@ -111,6 +111,8 @@ public class SeedService {
             var bagHandles = new AccessoryCategory().setCategory(AccessoryEnum.BAG_HANDLES);
             var woodBase = new AccessoryCategory().setCategory(AccessoryEnum.WOOD_BASE);
             var zippers = new AccessoryCategory().setCategory(AccessoryEnum.ZIPPERS);
+            var hooks = new AccessoryCategory().setCategory(AccessoryEnum.HOOK);
+
 
             accessoryCategoryRepository.save(needle);
             accessoryCategoryRepository.save(amigurumiAccessory);
@@ -119,6 +121,7 @@ public class SeedService {
             accessoryCategoryRepository.save(bagHandles);
             accessoryCategoryRepository.save(woodBase);
             accessoryCategoryRepository.save(zippers);
+            accessoryCategoryRepository.save(hooks);
         }
     }
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head></head>
+
+<body>
+<div th:fragments="footer">
+    <!--class="container-fluid footer bg-light py-5" style="margin-top: 90px;">-->
+    <div class="container text-center py-5">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <a href="index.html" class="navbar-brand m-0">
+                    <h1 class="text-center mt-2">
+                        <a class="col-sm-6 text-center text-sm-right border-right mb-3 mb-sm-0"><span class="text-secondary"></span>Aranea</a>
+                </h1>
+                </a>
+            </div>
+        </div>
+            <div class="col-12 mt-2 mb-4">
+                <div class="row">
+                    <div class="col-sm-6 text-center text-sm-right border-right mb-3 mb-sm-0">
+                        <h5 class="font-weight-bold mb-2" th:text="#{footer_contact}">Contacts</h5>
+                        <p class="mb-2" th:text="#{footer_contact_address}">Sofia</p>
+                    </div>
+                    <div class="col-sm-6 text-center text-sm-left">
+                        <h5 class="font-weight-bold mb-2" th:text="#{footer_work}">Working hours</h5>
+                        <p class="mb-2" th:text="#{footer_work_days}">Mon – Fri, 8AM – 5PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <p class="badge-dark">&copy; <a href="/">Aranea</a>. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript Libraries -->
+<!--<script th:src="@{https://code.jquery.com/jquery-3.4.1.min.js}"></script>
+<script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/lib/easing/easing.min.js}"></script>
+<script th:src="@{/lib/waypoints/waypoints.min.js}"></script>
+<script th:src="@{/lib/owlcarousel/owl.carousel.min.js}"></script>
+<script th:src="@{/lib/isotope/isotope.pkgd.min.js}"></script>
+<script th:src="@{/lib/lightbox/js/lightbox.min.js}"></script>
+
+&lt;!&ndash; Contact Javascript File &ndash;&gt;
+<script th:src="@{/mail/jqBootstrapValidation.min.js}"></script>
+<script th:src="@{/mail/contact.js}"></script>
+
+&lt;!&ndash; Template Javascript &ndash;&gt;
+<script th:src="@{/js/main.js}"></script>-->
+
+</body>
+</html>

@@ -45,7 +45,7 @@ public class SecurityConfiguration {
               defaultSuccessUrl("/").//use true argument if you always want to go there, otherwise go to previous page
               failureForwardUrl("/users/login-error").
           and().logout().//configure logout
-            logoutUrl("/users/logout").
+            logoutUrl("/logout").
             logoutSuccessUrl("/").//go to homepage after logout
             invalidateHttpSession(true).
           and().
