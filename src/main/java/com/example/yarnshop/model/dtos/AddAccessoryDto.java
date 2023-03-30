@@ -4,12 +4,13 @@ import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
 
 import java.math.BigDecimal;
 
 public class AddAccessoryDto {
     @NotNull
-    @Size(min = 5, max = 20)
+    @Size(min = 5)
     private String name;
     @OneToOne
     private Long categoryId;
@@ -32,6 +33,9 @@ public class AddAccessoryDto {
 
     @NotNull
     private String color;
+    @NotNull
+    @URL
+    private String imageUrl;
 
     public AddAccessoryDto() {
     }
@@ -105,6 +109,15 @@ public class AddAccessoryDto {
 
     public AddAccessoryDto setColor(String color) {
         this.color = color;
+        return this;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public AddAccessoryDto setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
         return this;
     }
 }

@@ -8,10 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -29,14 +26,14 @@ public class AccessoryController {
 
 
     @GetMapping("/add")
-    public String getAddProduct(Model model) {
+    public String getAddAccessories(Model model) {
         model.addAttribute("categories", accessoryCategoryService.getAllAccessoryCategories());
         model.addAttribute("countries", countryService.findAll());
         return "accessory-add";
     }
 
     @PostMapping("/add")
-    public String addProducts(@Valid AddAccessoryDto accessoryDto,
+    public String addAccessories(@Valid AddAccessoryDto accessoryDto,
                               BindingResult bindingResult,
                               RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
@@ -44,15 +41,27 @@ public class AccessoryController {
             redirectAttributes.addFlashAttribute(
                     "org.springframework.validation.BindingResult.accessoryDto", bindingResult);
 
-            return "redirect:accessory-add";
+            return "redirect: accessory-add";
         }
         accessoryService.addAccessory(accessoryDto);
         return "index";
     }
 
+    @GetMapping("all")
+    public String getAllAccessories(Model model) {
+        model.addAttribute("accessories", accessoryService.getAllYarns());
+        return "accessory";
+    }
+    @GetMapping("/info/{id}")
+    public String accessoryInfo (@PathVariable("id") Long id, Model model){
+        model.addAttribute ("accessoryInfo", this.accessoryService.getProductInfoById(id));
+        return "accessory-info";
+    }
+
+
 
     @ModelAttribute("accessoryDto")
-    public AddAccessoryDto initAddProductDTO() {
+    public AddAccessoryDto initAddAccessory() {
         return new AddAccessoryDto();
     }
 

@@ -12,39 +12,57 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto col-12 justify-content-between">
-                        <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <!-- Logged users, no mather of the roles -->
+
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
                             <h1 class="text-center mt-2">
-                            <a class="badge badge-pill badge-dark" th:href="@{/pages/all}">All users</a></h1>
-                        </li>
-                        <li class="nav-item"sec:authorize="!isAuthenticated()">
-                            <h1 class="text-center mt-2">
-                                <a class="nav-link text-black active h5 modal-dialog-centered" th:href="@{/home}">Aranea shop</a>
+                                <a class="badge badge-pill badge-dark" th:href="@{/}">Aranea shop</a>
+                                <a  class="badge badge-pill badge-dark" th:href="@{/yarns/all}">Yarns</a>
+                                <a  class="badge badge-pill badge-dark" th:href="@{/toys/all}">Toys</a>
+                                <a  class="badge badge-pill badge-dark" th:href="@{/accessories/all}">Accessories</a>
+
                             </h1>
                         </li>
-                        <li class="nav-item"  sec:authorize="hasRole('USER')">
+                        <li class="nav-item" sec:authorize="hasRole('USER')">
                             <h1 class="text-center mt-2">
-                            <a class="badge badge-pill badge-dark" th:href="@{/pages/users}">Users</a>
+                                <a  class="badge badge-pill badge-dark" th:href="@{/yarns/all}">Yarns</a>
+                                <a  class="badge badge-pill badge-dark" th:href="@{/toys/all}">Toys</a>
+                                <a  class="badge badge-pill badge-dark" th:href="@{/accessories/all}">Accessories</a>
+
                             </h1>
                         </li>
-                        <li class="nav-item"  sec:authorize="hasRole('ADMIN')">
-                            <a class="badge badge-pill badge-dark" th:href="@{/pages/admins}">Admins</a>
-                            <a class="badge badge-pill badge-dark" th:href="@{/yarns/add}">Add Yarn</a>
-                            <a class="badge badge-pill badge-dark" th:href="@{/accessories/add}">Add Accessory</a>
+                        <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                            <h2 class="text-center mt-2">
+                                <a class="badge badge-pill badge-dark" th:href="@{/pages/admins}">Admins</a>
+                                <a class="badge badge-pill badge-dark" th:href="@{/accessories/add}">Add Accessory</a>
+                                <a class="badge badge-pill badge-dark" th:href="@{/toys/add}">Add Toy</a>
+                                <a  class="badge badge-pill badge-dark" th:href="@{/yarns/add}">Add Yarns</a>
+                            </h2>
                         </li>
-                        <li class="nav-item"sec:authorize="!isAuthenticated()">
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
                             <h1 class="text-center mt-2">
-                            <a class="nav-link text-black active h5 modal-dialog-centered" th:href="@{/users/register}">Register</a>
+                                <a class="badge badge-pill badge-dark" th:href="@{/users/register}">Register</a>
                             </h1>
                         </li>
                         <li class="nav-item" sec:authorize="!isAuthenticated()">
                             <h1 class="text-center mt-2">
-                            <a class="nav-link text-black active h5 modal-dialog-centered" th:href="@{/users/login}">Login</a>
+                                <a class="badge badge-pill badge-dark" th:href="@{/users/login}">Login</a>
                             </h1>
                         </li>
-                        <span class="nav-item">
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <form class="badge badge-pill badge-dark"
+                                  th:method="POST"
+                                  th:action="@{/logout}"
+                                  sec:authorize="isAuthenticated()">
+
+                                <h1><input class="btn btn-link nav-link text-white px-3 justify-content-around"  type="submit"
+                                           value="Logout">
+                                </h1>
+                            </form>
+
+                            <span class="nav-item">
                         <form th:method="get">
-                            <label class="text-black active h6 align-text-top" th:text="#{navbar_language}" for="lang"></label>
+                            <label class="text-black active h6 align-text-top" th:text="#{navbar_language}"
+                                   for="lang"></label>
                             <select
                                     onchange="this.form.submit()"
                                     id="lang"
@@ -54,6 +72,7 @@
                             </select>
                         </form>
                     </span>
+                        </li>
                     </ul>
                 </div>
             </div>

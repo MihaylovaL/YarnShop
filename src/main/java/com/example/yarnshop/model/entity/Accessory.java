@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.URL;
 
 import java.math.BigDecimal;
 
@@ -19,10 +20,11 @@ public class Accessory {
     private Long id;
 
     @Column(nullable = false)
-    @Size(min = 5, max = 20)
+    @Size(min = 5)
     private String name;
 
-    @Column
+    @Column(nullable = false)
+    @URL
     private String imageUrl;
 
     @OneToOne

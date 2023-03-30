@@ -2,12 +2,13 @@ package com.example.yarnshop.model.dtos;
 
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import java.math.BigDecimal;
 
 public class AddYarnDto {
 
-    @Size(min = 5, max = 20)
+    @Size(min = 5)
     private String name;
 
     @NotNull
@@ -30,16 +31,15 @@ public class AddYarnDto {
     @NotNull
     private Long countryId;
 
-    @NotNull
-    private Integer size;
 
     @NotNull
     private String description;
 
     @NotNull
     private String color;
-
-    private String image;
+    @NotNull
+    @URL
+    private String imageUrl;
 
     public AddYarnDto() {
     }
@@ -98,15 +98,6 @@ public class AddYarnDto {
         return this;
     }
 
-    public Integer getSize() {
-        return size;
-    }
-
-    public AddYarnDto setSize(Integer size) {
-        this.size = size;
-        return this;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -126,11 +117,11 @@ public class AddYarnDto {
     }
 
     public String getImage() {
-        return image;
+        return imageUrl;
     }
 
     public AddYarnDto setImage(String image) {
-        this.image = image;
+        this.imageUrl = image;
         return this;
     }
 }

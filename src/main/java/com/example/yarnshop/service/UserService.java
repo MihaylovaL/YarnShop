@@ -34,6 +34,7 @@ public class UserService {
                              Consumer<Authentication> successfulLoginProcessor) {
 
         YarnShopUser userEntity = new YarnShopUser().
+                setUsername(registrationDTO.getUsername()).
                 setFirstName(registrationDTO.getFirstName()).
                 setLastName(registrationDTO.getLastName()).
                 setEmail(registrationDTO.getEmail()).

@@ -1,14 +1,15 @@
 package com.example.yarnshop.service;
 
 import com.example.yarnshop.model.dtos.AddYarnDto;
-import com.example.yarnshop.model.entity.Country;
+import com.example.yarnshop.model.dtos.view.YarnWithInfoView;
 import com.example.yarnshop.model.entity.Yarn;
-import com.example.yarnshop.model.enums.Category;
 import com.example.yarnshop.repository.CountryRepository;
 import com.example.yarnshop.repository.YarnCategoryRepository;
 import com.example.yarnshop.repository.YarnRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class YarnService {
@@ -36,11 +37,20 @@ public class YarnService {
         yarn.setDescription(yarnDto.getDescription());
         yarn.setCountry(country);
         yarn.setLength(yarnDto.getLength());
-        yarn.setSize(yarnDto.getSize());
         yarn.setPrice(yarnDto.getPrice());
         yarn.setWeight(yarnDto.getWeight());
+        yarn.setImageUrl(yarnDto.getImage());
 
         yarnRepository.save(yarn);
+    }
+
+    public List<Yarn> getAllYarns(){
+        return yarnRepository.findAll();
+    }
+    public YarnWithInfoView getProductInfoById(Long id) {
+        Yarn yarn = this.yarnRepository.findById(id)
+                .orElseThrow(() -> new Error("Product not found!"));
+        return this.modelMapper.map(yarn, YarnWithInfoView.class);
     }
 
 }

@@ -1,16 +1,11 @@
 package com.example.yarnshop.model.entity;
 
-import com.example.yarnshop.model.enums.Category;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import java.math.BigDecimal;
 
@@ -23,7 +18,7 @@ public class Yarn {
     private Long id;
 
     @Column(nullable = false)
-    @Size(min = 5, max = 20)
+    @Size(min = 5)
     private String name;
     @OneToOne
     private YarnCategory category;
@@ -45,9 +40,6 @@ public class Yarn {
     @ManyToOne
     private Country country;
 
-    @Column(nullable = false)
-    private Integer size;
-
     @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
 
@@ -56,8 +48,9 @@ public class Yarn {
 
     @Column(nullable = false)
     private String color;
-    @Column
-    private String image;
+    @Column(nullable = false)
+    @URL
+    private String imageUrl;
 
     public Yarn() {
     }
@@ -125,15 +118,6 @@ public class Yarn {
         return this;
     }
 
-    public Integer getSize() {
-        return size;
-    }
-
-    public Yarn setSize(Integer size) {
-        this.size = size;
-        return this;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -161,12 +145,12 @@ public class Yarn {
         return this;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public Yarn setImage(String image) {
-        this.image = image;
+    public Yarn setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
         return this;
     }
 }
