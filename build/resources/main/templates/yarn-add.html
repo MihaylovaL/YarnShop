@@ -13,13 +13,13 @@
 <div th:insert="~{fragments/navbar}"></div>
 
 <main role="main" class="bg-secondary">
-   <!-- <div class="carousel-inner">
+   <div class="carousel-inner">
 
         <div class="carousel-item active">
             <img class="w-100" alt="Image" th:src="@{/images/carousel-12.jpg}">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                 <div class="p-3" style="max-width: 1100px;">
--->
+
                     <div class="container bg-blur rounded p-10 mt-10 w-0">
                         <form th:method="POST"
                               th:action="@{/yarns/add}"
@@ -41,6 +41,22 @@
                                     </small>
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label for="image" class="col-sm-10 col-form-label">Image</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"
+                                           id="image"
+                                           name="image"
+                                           th:field="*{image}"
+                                           th:errorclass="is-invalid"
+                                           aria-describedby="imageHelpInline" placeholder="image">
+                                    <small id="imageHelpInline"
+                                           class="invalid-feedback bg-danger text-light rounded">
+                                        Enter image.
+                                    </small>
+                                </div>
+                            </div>>
 
                             <div class="form-group">
                                 <div class="form-group blu-margin">
@@ -147,30 +163,13 @@
                                     </small>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="imageUrl" class="col-sm-10 col-form-label">ImageUrl</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control"
-                                           id="imageUrl"
-                                           name="imageUrl"
-                                           th:field="*{addYarnDto.imageUrl}"
-                                           th:errorclass="is-invalid"
-                                           aria-describedby="imageUrlHelpInline" placeholder="imageUrl">
-                                    <small id="imageUrlHelpInline"
-                                           class="invalid-feedback bg-danger text-light rounded">
-                                        Enter color
-                                    </small>
-                                </div>
-                            </div>
-
                             <button type="submit" class="btn btn-info w-100">Add Yarn</button>
                         </form>
-                        <hr class="bg-light">
-                    </div>
-  <!--              </div>
+                        <hr class="bg-light"></div>
+              </div>
             </div>
         </div>
-    </div>-->
+    </div>
 </main>
 </body>
 </html>
