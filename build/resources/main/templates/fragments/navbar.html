@@ -16,9 +16,7 @@
                         <li class="nav-item" sec:authorize="!isAuthenticated()">
                             <h1 class="text-center mt-2">
                                 <a class="badge badge-pill badge-dark" th:href="@{/}">Aranea shop</a>
-                                <a  class="badge badge-pill badge-dark" th:href="@{/yarns/all}">Yarns</a>
-                                <a  class="badge badge-pill badge-dark" th:href="@{/toys/all}">Toys</a>
-                                <a  class="badge badge-pill badge-dark" th:href="@{/accessories/all}">Accessories</a>
+
 
                             </h1>
                         </li>
@@ -41,6 +39,9 @@
                         <li class="nav-item" sec:authorize="!isAuthenticated()">
                             <h1 class="text-center mt-2">
                                 <a class="badge badge-pill badge-dark" th:href="@{/users/register}">Register</a>
+                                <a  class="badge badge-pill badge-dark" th:href="@{/yarns/all}">Yarns</a>
+                                <a  class="badge badge-pill badge-dark" th:href="@{/toys/all}">Toys</a>
+                                <a  class="badge badge-pill badge-dark" th:href="@{/accessories/all}">Accessories</a>
                             </h1>
                         </li>
                         <li class="nav-item" sec:authorize="!isAuthenticated()">
@@ -54,7 +55,7 @@
                                   th:action="@{/logout}"
                                   sec:authorize="isAuthenticated()">
 
-                                <h1><input class="btn btn-link nav-link text-white px-3 justify-content-around"  type="submit"
+                                <h1><input class="btn btn-link nav-link text-white px-3 justify-content-around" type="submit"
                                            value="Logout">
                                 </h1>
                             </form>
