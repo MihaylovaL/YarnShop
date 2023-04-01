@@ -1,6 +1,7 @@
 package com.example.yarnshop.web;
 
 import com.example.yarnshop.model.dtos.AddAccessoryDto;
+import com.example.yarnshop.model.dtos.view.ToyWithInfoView;
 import com.example.yarnshop.service.AccessoryCategoryService;
 import com.example.yarnshop.service.AccessoryService;
 import com.example.yarnshop.service.CountryService;
@@ -57,6 +58,36 @@ public class AccessoryController {
         model.addAttribute ("accessoryInfo", this.accessoryService.getProductInfoById(id));
         return "accessory-info";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editProduct(@PathVariable("id") Long accessoryId, Model model){
+        model.addAttribute("accessoryToEdit", this.accessoryService.getProductInfoById(accessoryId));
+        return "accessory-edit";
+    }
+
+    @PatchMapping("/edit/{id}")
+    public String editProduct(@PathVariable("id") Long productId,
+                              @Valid ToyWithInfoView editAccessoryDto,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes){
+
+        if(bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("editAccessoryDto", editAccessoryDto);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.editAccessoryDto", bindingResult);
+
+            return "redirect:/accessories/edit/" + productId;
+        }
+
+        this.accessoryService.editProduct(productId, editAccessoryDto);
+        return "redirect:/users/admin";
+    }
+    @GetMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable("id") Long productId){
+        this.accessoryService.deleteProductById(productId);
+        return "redirect:/users/admin";
+    }
+
 
 
 

@@ -40,4 +40,22 @@ public class ToyService {
         return this.modelMapper.map(toy, ToyWithInfoView.class);
     }
 
+    public void editProduct(Long productId, ToyWithInfoView editProductDTO) {
+        Toy toyToEdit = this.toyRepository.findById(productId)
+                .orElseThrow(() -> new Error("Product not found!"));
+        toyToEdit.setDescription(editProductDTO.getDescription());
+        toyToEdit.setPrice(editProductDTO.getPrice());
+        toyToEdit.setImageUrl(editProductDTO.getImageUrl());
+        this.toyRepository.save(toyToEdit);
+    }
+
+    public void deleteProductById(Long productId) {
+        this.toyRepository.deleteById(productId);
+    }
+
+    public Toy findToyById(Long id){
+        return toyRepository.findById(id).orElseThrow();
+    }
+
+
 }

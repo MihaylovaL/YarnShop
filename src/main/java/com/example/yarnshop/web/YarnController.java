@@ -1,6 +1,7 @@
 package com.example.yarnshop.web;
 
 import com.example.yarnshop.model.dtos.AddYarnDto;
+import com.example.yarnshop.model.dtos.view.ToyWithInfoView;
 import com.example.yarnshop.service.CountryService;
 import com.example.yarnshop.service.YarnCategoryService;
 import com.example.yarnshop.service.YarnService;
@@ -55,6 +56,35 @@ public class YarnController {
     public String yarnInfo (@PathVariable("id") Long id, Model model){
         model.addAttribute ("yarnInfo", this.yarnService.getProductInfoById(id));
         return "yarn-info";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editProduct(@PathVariable("id") Long accessopryId, Model model){
+        model.addAttribute("yarnToEdit", this.yarnService.getProductInfoById(accessopryId));
+        return "yarn-edit";
+    }
+
+    @PatchMapping("/edit/{id}")
+    public String editProduct(@PathVariable("id") Long productId,
+                              @Valid ToyWithInfoView editYarnDto,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes){
+
+        if(bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("editYarnDto", editYarnDto);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.editYarnDto", bindingResult);
+
+            return "redirect:/yarns/edit/" + productId;
+        }
+
+        this.yarnService.editProduct(productId, editYarnDto);
+        return "redirect:/users/admin";
+    }
+    @GetMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable("id") Long productId){
+        this.yarnService.deleteProductById(productId);
+        return "redirect:/users/admin";
     }
 
 

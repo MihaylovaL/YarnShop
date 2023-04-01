@@ -28,9 +28,10 @@ public class SecurityConfiguration {
           // allow access to all static files (images, CSS, js)
           requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
           // the URL-s below are available for all users - logged in and anonymous
-          requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/home").permitAll().
+          requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/yarns/all", "/accessories/all",
+                  "/toys/all").permitAll().
           // only for moderators
-          requestMatchers("/pages/moderators").hasRole(Role.USER.name()).
+          requestMatchers("/pages/users").hasRole(Role.USER.name()).
           // only for admins
           requestMatchers("/pages/admins").hasRole(Role.ADMIN.name()).
         anyRequest().authenticated().

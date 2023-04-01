@@ -2,6 +2,7 @@ package com.example.yarnshop.model.dtos;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import org.hibernate.validator.constraints.URL;
 
 import java.math.BigDecimal;
 
@@ -16,7 +17,8 @@ public class AddToyDto {
     @NotNull
     private String description;
     @NotNull
-    private String imageUrl;
+
+    private String image;
 
     public AddToyDto() {
     }
@@ -58,11 +60,11 @@ public class AddToyDto {
     }
 
     public String getImage() {
-        return imageUrl;
+        return image;
     }
 
     public AddToyDto setImage(String image) {
-        this.imageUrl = image;
+        this.image = image;
         return this;
     }
 }

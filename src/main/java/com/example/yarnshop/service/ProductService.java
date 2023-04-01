@@ -1,5 +1,7 @@
 package com.example.yarnshop.service;
 
+import com.example.yarnshop.model.dtos.view.AddProductToCartDto;
+import com.example.yarnshop.model.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,7 @@ public class ProductService {
         this.accessoryService = accessoryService;
         this.toyService = toyService;
     }
-    /*public List<Product> addProductToCart(AddProductToCartDto addProductToCartDto){
+   /* public List<Product> addProductToCart(AddProductToCartDto addProductToCartDto){
 
     }*/
 }

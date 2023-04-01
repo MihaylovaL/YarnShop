@@ -20,6 +20,9 @@ public abstract class Product {
     @Positive
     BigDecimal price;
 
+    public Product() {
+    }
+
     public Long getId() {
         return id;
     }

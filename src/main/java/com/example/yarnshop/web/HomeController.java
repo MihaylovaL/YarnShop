@@ -24,8 +24,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String getHome(@AuthenticationPrincipal AppUserDetails appUserDetails, Model model){
-        /*model.addAttribute("yarnCategories", yarnCategoryService.getAllYarnCategories());
-        model.addAttribute("accessories", accessoryCategoryService.getAllAccessoryCategories());*/
         model.addAttribute("yarns", yarnService.getAllYarns());
         if (appUserDetails != null) {
             model.addAttribute("username", appUserDetails.getUsername());

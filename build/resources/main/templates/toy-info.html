@@ -22,7 +22,7 @@
             <div class="d-flex bg-light">
                 <section id="movie-name-and-photo-left" class="p-1">
                     <div class="text-center m-auto p-lg-4">
-                        <img id="image-actor"  width="450" height="450" th:src="@{/images/carousel-1.jpg}">
+                        <img id="image-actor"  width="1100" height="1100" th:src="@{toyInfo.imageUrl}">
                     </div>
                 </section>
                 <section id="movie-description-right" class="p-1">
@@ -31,6 +31,7 @@
 
                         <a class="btn btn-primary py-md-3 px-md-5 mt-2" th:text="|Price: *{toyInfo.price} BGN.|"></a>
                         <a class="btn btn-primary py-md-3 px-md-5 mt-2" th:href="@{/purchase/{id}(id = *{id})}">Add to cart</a>
+                        <a class="btn btn-primary py-md-3 px-md-5 mt-2" th:href="@{/toys/edit/{id}(id = *{id})}">Edit</a>
 
                     </div>
                 </section>

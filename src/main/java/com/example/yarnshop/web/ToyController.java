@@ -1,12 +1,15 @@
 package com.example.yarnshop.web;
 
 import com.example.yarnshop.model.dtos.AddToyDto;
+import com.example.yarnshop.model.dtos.view.ToyWithInfoView;
+import com.example.yarnshop.model.entity.Toy;
 import com.example.yarnshop.service.ToyService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -39,15 +42,39 @@ public class ToyController {
         return "index";
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public String getAllAccessories(Model model) {
         model.addAttribute("toys", toyService.getAllToys());
         return "toy";
     }
-    @GetMapping("/info/{id}")
-    public String accessoryInfo (@PathVariable("id") Long id, Model model){
-        model.addAttribute ("toyInfo", this.toyService.getProductInfoById(id));
-        return "toy-info";
+    @GetMapping("/edit/{id}")
+    public String editProduct(@PathVariable("id") Long toyId, Model model){
+        model.addAttribute("productToEdit", this.toyService.getProductInfoById(toyId));
+        return "toy-edit";
+    }
+
+    @PatchMapping("/edit/{id}")
+    public String editProduct(@PathVariable("id") Long productId,
+                              @Valid ToyWithInfoView editToyDto,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes){
+
+        if(bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("editProductDTO", editToyDto);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.editToyDto", bindingResult);
+
+            return "redirect:/toys/edit/" + productId;
+        }
+
+        this.toyService.editProduct(productId, editToyDto);
+        return "redirect:/users/admin";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable("id") Long productId){
+        this.toyService.deleteProductById(productId);
+        return "redirect:/users/admin";
     }
 
 

@@ -1,7 +1,9 @@
 package com.example.yarnshop.service;
 
 import com.example.yarnshop.model.dtos.AddYarnDto;
+import com.example.yarnshop.model.dtos.view.ToyWithInfoView;
 import com.example.yarnshop.model.dtos.view.YarnWithInfoView;
+import com.example.yarnshop.model.entity.Toy;
 import com.example.yarnshop.model.entity.Yarn;
 import com.example.yarnshop.repository.CountryRepository;
 import com.example.yarnshop.repository.YarnCategoryRepository;
@@ -51,6 +53,19 @@ public class YarnService {
         Yarn yarn = this.yarnRepository.findById(id)
                 .orElseThrow(() -> new Error("Product not found!"));
         return this.modelMapper.map(yarn, YarnWithInfoView.class);
+    }
+
+    public void editProduct(Long productId, ToyWithInfoView editProductDTO) {
+        Yarn yarnToEdit = this.yarnRepository.findById(productId)
+                .orElseThrow(() -> new Error("Product not found!"));
+        yarnToEdit.setDescription(editProductDTO.getDescription());
+        yarnToEdit.setPrice(editProductDTO.getPrice());
+        yarnToEdit.setImageUrl(editProductDTO.getImageUrl());
+        this.yarnRepository.save(yarnToEdit);
+    }
+
+    public void deleteProductById(Long productId) {
+        this.yarnRepository.deleteById(productId);
     }
 
 }

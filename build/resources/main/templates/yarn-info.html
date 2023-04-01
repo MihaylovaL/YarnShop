@@ -29,8 +29,8 @@
                     <div class="bg-light p-4 col-lg-6">
                         <h2 class="text-dark h4 " th:text="*{yarnInfo.description}"></h2>
 
-                        <a  id="price-description-right" class="p-1" th:text="|Price: *{yarnInfo.price} BGN.|"></a>
-                        <a  id="add-description-right" class="p-1"" th:href="@{/purchase/{id}(id = *{id})}">Add to cart</a>
+                        <a class="btn btn-primary py-md-3 px-md-5 mt-2" th:text="|Price: *{yarnInfo.price} BGN.|"></a>
+                        <a class="btn btn-primary py-md-3 px-md-5 mt-2" th:href="@{/purchase/{id}(id = *{id})}">Add to cart</a>
 
                     </div>
                 </section>
