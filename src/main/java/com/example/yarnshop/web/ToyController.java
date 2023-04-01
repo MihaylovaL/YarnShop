@@ -1,15 +1,13 @@
 package com.example.yarnshop.web;
 
 import com.example.yarnshop.model.dtos.AddToyDto;
-import com.example.yarnshop.model.dtos.view.ToyWithInfoView;
-import com.example.yarnshop.model.entity.Toy;
+import com.example.yarnshop.model.dtos.view.ProductWithInfoDto;
 import com.example.yarnshop.service.ToyService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -50,12 +48,12 @@ public class ToyController {
     @GetMapping("/edit/{id}")
     public String editProduct(@PathVariable("id") Long toyId, Model model){
         model.addAttribute("productToEdit", this.toyService.getProductInfoById(toyId));
-        return "toy-edit";
+        return "product-edit";
     }
 
     @PatchMapping("/edit/{id}")
     public String editProduct(@PathVariable("id") Long productId,
-                              @Valid ToyWithInfoView editToyDto,
+                              @Valid ProductWithInfoDto editToyDto,
                               BindingResult bindingResult,
                               RedirectAttributes redirectAttributes){
 
@@ -69,6 +67,11 @@ public class ToyController {
 
         this.toyService.editProduct(productId, editToyDto);
         return "redirect:/users/admin";
+    }
+    @GetMapping("/info/{id}")
+    public String yarnInfo (@PathVariable("id") Long id, Model model){
+        model.addAttribute ("yarnInfo", this.toyService.getProductInfoById(id));
+        return "product-info";
     }
 
     @GetMapping("/delete/{id}")

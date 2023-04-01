@@ -1,9 +1,8 @@
 package com.example.yarnshop.service;
 
 import com.example.yarnshop.model.dtos.AddToyDto;
-import com.example.yarnshop.model.dtos.view.ToyWithInfoView;
+import com.example.yarnshop.model.dtos.view.ProductWithInfoDto;
 import com.example.yarnshop.model.entity.Toy;
-import com.example.yarnshop.model.entity.Yarn;
 import com.example.yarnshop.repository.ToyRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -34,13 +33,13 @@ public class ToyService {
     public List<Toy> getAllToys(){
         return toyRepository.findAll();
     }
-    public ToyWithInfoView getProductInfoById(Long id) {
+    public ProductWithInfoDto getProductInfoById(Long id) {
         Toy toy = this.toyRepository.findById(id)
                 .orElseThrow(() -> new Error("Product not found!"));
-        return this.modelMapper.map(toy, ToyWithInfoView.class);
+        return this.modelMapper.map(toy, ProductWithInfoDto.class);
     }
 
-    public void editProduct(Long productId, ToyWithInfoView editProductDTO) {
+    public void editProduct(Long productId, ProductWithInfoDto editProductDTO) {
         Toy toyToEdit = this.toyRepository.findById(productId)
                 .orElseThrow(() -> new Error("Product not found!"));
         toyToEdit.setDescription(editProductDTO.getDescription());

@@ -2,23 +2,22 @@ package com.example.yarnshop.model.dtos.view;
 
 import java.math.BigDecimal;
 
-public class YarnWithInfoView {
+public class ProductWithInfoDto {
     private Long id;
     private String name;
-    private Long categoryId;
     private String description;
     private String color;
     private BigDecimal price;
     private String imageUrl;
 
-    public YarnWithInfoView() {
+    public ProductWithInfoDto() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public YarnWithInfoView setId(Long id) {
+    public ProductWithInfoDto setId(Long id) {
         this.id = id;
         return this;
     }
@@ -27,17 +26,8 @@ public class YarnWithInfoView {
         return name;
     }
 
-    public YarnWithInfoView setName(String name) {
+    public ProductWithInfoDto setName(String name) {
         this.name = name;
-        return this;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public YarnWithInfoView setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
         return this;
     }
 
@@ -45,7 +35,7 @@ public class YarnWithInfoView {
         return description;
     }
 
-    public YarnWithInfoView setDescription(String description) {
+    public ProductWithInfoDto setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -54,7 +44,7 @@ public class YarnWithInfoView {
         return color;
     }
 
-    public YarnWithInfoView setColor(String color) {
+    public ProductWithInfoDto setColor(String color) {
         this.color = color;
         return this;
     }
@@ -63,7 +53,7 @@ public class YarnWithInfoView {
         return price;
     }
 
-    public YarnWithInfoView setPrice(BigDecimal price) {
+    public ProductWithInfoDto setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -72,7 +62,7 @@ public class YarnWithInfoView {
         return imageUrl;
     }
 
-    public YarnWithInfoView setImageUrl(String imageUrl) {
+    public ProductWithInfoDto setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }

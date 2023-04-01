@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Aranea shop</title>
+    <th:block th:replace="~{fragments/head}"></th:block>
+</head>
+
+<body class="order-details">
+
+<div class="container mt-5 p-3 rounded cart" >
+    <form class="row no-gutters"
+          th:action="@{/cart}"
+          th:method="patch"
+    th:object="${products}">
+        <div class="col-md-8">
+            <div class="product-details mr-2">
+                <div class="d-flex flex-row align-items-center">
+                    <i class="fa fa-long-arrow-left"></i>
+                    <a th:href="@{/}" class="btn btn-primary mt-2">Continue shopping</a>
+                </div>
+                <hr>
+                <h6 class="mb-0">Cart</h6>
+                <div class="d-flex justify-content-between">
+                </div>
+                <div class="cart_items"
+                     th:each="product : ${products}"
+                     th:object="${product}">
+                    <div class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded">
+                        <div class="d-flex flex-row">
+                            <img class="rounded" th:src="${product.name}" width="40">
+                            <div class="ml-2">
+                                <span class="font-weight-bold d-block"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                            <span class="d-block" ></span>
+                            <span class="d-block ml-5"></span>
+                            <span class="d-block ml-5 font-weight-bold" th:text="| ${price} BGN.|"></span>
+
+                            <a class="ml-3 text-black btn btn-sm btn-secondary col-sm-1 font-weight-bold"></a>
+                               <!--th:href="@{/cart/remove-product-from-list/{id}(id = *{id})}">Х</a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex btn-primary btn-block d-flex justify-content-between mt-3">
+                    <span class="d-block font-weight-bold ml-lg-auto text-right">Total</span>
+                    <span class="d-block ml-5 font-weight-bold" th:text="|  BGN.|"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="payment-info">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span><h4 class="text-white font-weight-bold"> Details</h4></span><img
+                        class="rounded"
+                        width="30">
+                </div>
+                <span class="type d-block mt-3 mb-1"></span>
+                <hr class="line">
+                <div class="d-flex justify-content-between information">
+
+                </div>
+                <div class="d-flex justify-content-between information">
+                    <span></span>
+                    <span></span></div>
+                <div class="d-flex justify-content-between information">
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="d-flex flex-row align-items-center">
+                    <i class="fa fa-long-arrow-left"></i>
+                    <button type="submit" class="btn btn-info w-100" th:href="@{/product/order/{id}}">Confirm order</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div th:insert="~{fragments/footer}"></div>
+</body>
+</html>

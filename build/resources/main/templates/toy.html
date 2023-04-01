@@ -22,13 +22,13 @@
             <div class="col-lg-3 col-md-6 mb-4 pb-2" th:each="toy : ${toys}"
                  th:object="${toy}">
 
-                <div class="section-title position-relative text-center">
-                    <div class="text-center m-auto p-lg-4">
-                        <img id="image-actor" width="500" height="200" th:src="${toy.imageUrl}">
-                    </div>
-                    <div class="section-title position-relative text-center" width="150">
-                        <h4 class="text-center m-auto p-lg-4"
+                <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                    <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                        <h4 class="font-weight-bold text-white mb-0"
                             th:text="|Price: *{price} BGN.|"></h4>
+                    </div>
+                    <div class="text-center m-auto p-lg-4">
+                        <img id="image-actor"  width="450" height="450" th:src="@{/images/carousel-1.jpg}">
                     </div>
                     <h5 class="font-weight-bold mb-4"
                         th:text="*{name}"></h5>
@@ -36,10 +36,12 @@
                     <a th:href="@{/purchase/{id}(id = *{id})}" class="btn btn-sm btn-secondary">Add to cart</a>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 <!-- Products End -->
+
 
 <!-- Footer Start -->
 <div th:insert="~{fragments/footer}"></div>

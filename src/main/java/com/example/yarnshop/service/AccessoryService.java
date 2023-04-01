@@ -1,11 +1,8 @@
 package com.example.yarnshop.service;
 
 import com.example.yarnshop.model.dtos.AddAccessoryDto;
-import com.example.yarnshop.model.dtos.view.AccessoryWithInfoView;
-import com.example.yarnshop.model.dtos.view.ToyWithInfoView;
-import com.example.yarnshop.model.dtos.view.YarnWithInfoView;
+import com.example.yarnshop.model.dtos.view.ProductWithInfoDto;
 import com.example.yarnshop.model.entity.Accessory;
-import com.example.yarnshop.model.entity.Toy;
 import com.example.yarnshop.repository.AccessoryCategoryRepository;
 import com.example.yarnshop.repository.AccessoryRepository;
 import com.example.yarnshop.repository.CountryRepository;
@@ -50,13 +47,13 @@ public class AccessoryService {
     public List<Accessory> getAllYarns(){
         return accessoryRepository.findAll();
     }
-    public AccessoryWithInfoView getProductInfoById(Long id) {
+    public ProductWithInfoDto getProductInfoById(Long id) {
         Accessory accessory = this.accessoryRepository.findById(id)
                 .orElseThrow(() -> new Error("Product not found!"));
-        return this.modelMapper.map(accessory, AccessoryWithInfoView.class);
+        return this.modelMapper.map(accessory, ProductWithInfoDto.class);
     }
 
-    public void editProduct(Long productId, ToyWithInfoView editProductDTO) {
+    public void editProduct(Long productId, ProductWithInfoDto editProductDTO) {
         Accessory accessoryToEdit = this.accessoryRepository.findById(productId)
                 .orElseThrow(() -> new Error("Product not found!"));
         accessoryToEdit.setDescription(editProductDTO.getDescription());

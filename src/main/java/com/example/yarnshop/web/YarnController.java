@@ -1,7 +1,7 @@
 package com.example.yarnshop.web;
 
 import com.example.yarnshop.model.dtos.AddYarnDto;
-import com.example.yarnshop.model.dtos.view.ToyWithInfoView;
+import com.example.yarnshop.model.dtos.view.ProductWithInfoDto;
 import com.example.yarnshop.service.CountryService;
 import com.example.yarnshop.service.YarnCategoryService;
 import com.example.yarnshop.service.YarnService;
@@ -55,18 +55,18 @@ public class YarnController {
     @GetMapping("/info/{id}")
     public String yarnInfo (@PathVariable("id") Long id, Model model){
         model.addAttribute ("yarnInfo", this.yarnService.getProductInfoById(id));
-        return "yarn-info";
+        return "product-info";
     }
 
     @GetMapping("/edit/{id}")
-    public String editProduct(@PathVariable("id") Long accessopryId, Model model){
-        model.addAttribute("yarnToEdit", this.yarnService.getProductInfoById(accessopryId));
-        return "yarn-edit";
+    public String editProduct(@PathVariable("id") Long accessoryId, Model model){
+        model.addAttribute("yarnToEdit", this.yarnService.getProductInfoById(accessoryId));
+        return "product-edit";
     }
 
     @PatchMapping("/edit/{id}")
     public String editProduct(@PathVariable("id") Long productId,
-                              @Valid ToyWithInfoView editYarnDto,
+                              @Valid ProductWithInfoDto editYarnDto,
                               BindingResult bindingResult,
                               RedirectAttributes redirectAttributes){
 
