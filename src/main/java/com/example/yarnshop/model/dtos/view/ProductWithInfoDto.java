@@ -9,6 +9,7 @@ public class ProductWithInfoDto {
     private String color;
     private BigDecimal price;
     private String imageUrl;
+    private Integer quantity;
 
     public ProductWithInfoDto() {
     }
@@ -64,6 +65,15 @@ public class ProductWithInfoDto {
 
     public ProductWithInfoDto setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public ProductWithInfoDto setQuantity(Integer quantity) {
+        this.quantity = quantity;
         return this;
     }
 }

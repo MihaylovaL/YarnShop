@@ -59,13 +59,12 @@
                 Insert Last name</small>
         </div>
         <div class="form-group">
-            <label for="email" class="font-weight-bold text-white">Email</label>
+            <label for="email address" class="font-weight-bold text-white">Email</label>
             <input type="email"
                    class="form-control"
-                   id="email"
+                   id="email address"
                    name="email"
                    placeholder="Email"
-                   size=""
                    th:value="*{email}">
             <small class="font-weight-bold text-white" th:if="${#fields.hasErrors('email')}">
                 Invalid email</small>
