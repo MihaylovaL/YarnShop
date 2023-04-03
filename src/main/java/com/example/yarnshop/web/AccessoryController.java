@@ -51,11 +51,11 @@ public class AccessoryController {
     @GetMapping("all")
     public String getAllAccessories(Model model) {
         model.addAttribute("accessories", accessoryService.getAllYarns());
-        return "product";
+        return "accessory";
     }
     @GetMapping("/info/{id}")
     public String accessoryInfo (@PathVariable("id") Long id, Model model){
-        model.addAttribute ("accessoryInfo", this.accessoryService.getProductInfoById(id));
+        model.addAttribute ("productInfo", this.accessoryService.getProductInfoById(id));
         return "product-info";
     }
 

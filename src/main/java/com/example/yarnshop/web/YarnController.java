@@ -54,7 +54,7 @@ public class YarnController {
     }
     @GetMapping("/info/{id}")
     public String yarnInfo (@PathVariable("id") Long id, Model model){
-        model.addAttribute ("yarnInfo", this.yarnService.getProductInfoById(id));
+        model.addAttribute ("productInfo", this.yarnService.getProductInfoById(id));
         return "product-info";
     }
 

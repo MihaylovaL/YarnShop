@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Aranea shop</title>
+</head>
+
+<body>
+<div th:include="~{fragments/navbar}"></div>
+
+<div th:action="@{/about}" class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3 mt-lg-5">Welcome!</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" th:href="@{/}">Home</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0"><a class="text-white" th:href="@{/toys}">Toys</a></p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <h1 class="section-title position-relative text-center mb-5">
+                    I create magic </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 py-5">
+                <h4 class="font-weight-bold mb-3">You choose</h4>
+                <p>This is where I make things for you. You can decide what it is:</p>
+                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3"></i>The toy</h5>
+                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3"></i>The size</h5>
+                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3"></i>The color</h5>
+                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3"></i>The yarn</h5>
+                <p>The prices depends on the size and the complexity.
+                    Don't hesitate to contact me.
+                    Check out our toys and you might like something </p>
+                <a th:href="@{/product}" class="btn btn-primary mt-2">Toys</a>
+            </div>
+            <div class="col-lg-4" style="min-height: 400px;">
+                <div class="position-relative h-100 rounded overflow-hidden">
+                    <img class="position-absolute w-100 h-100" th:src="@{images/about.jpg}" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-4 py-5">
+
+                <p>We work with Speedy and Econt.</p>
+                <a th:href="@{/contact}" class="btn btn-secondary mt-2">Контакти</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 py-5">
+                <h4 class="font-weight-bold mb-3">My passion</h4>
+                <h5 class="text-muted mb-3"> Crocheting is a bit like being a magician - you mumble to yourself
+                    and waggle a stick around and no one
+                    else has a clue how you did it.</h5>
+            </div>
+
+            <div class="col-lg-4" style="min-height: 400px;">
+                <div class="position-relative h-100 rounded overflow-hidden">
+                    <img class="position-absolute w-100 h-100" th:src="@{images/backgound.jpg}" style="object-fit: cover;">
+                </div>
+            </div>
+
+            <div class="col-lg-4 py-5">
+                <h4 class="font-weight-bold mb-3">About me</h4>
+                <h5 class="text-muted mb-3">I love finding new hobbies.</h5>
+                <p>But the most pleasure brings me when
+                    I see the smile my toys brings ot the kids faces!</p>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div th:insert="~{fragments/footer}"></div>
+</body>
+</html>

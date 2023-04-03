@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
-@RequestMapping("/pages")
+@RequestMapping("/")
 public class PageController {
 
     private final UserService userService;
@@ -23,12 +23,16 @@ public class PageController {
         this.yarnService = yarnService;
         this.accessoryService = accessoryService;
     }
-    @GetMapping("/admins")
+    @GetMapping("/pages/admins")
     public String adminPanel(Model model){
         model.addAttribute ("allUsers", this.userService.getAllUsers());
         model.addAttribute ("allToys", this.toyService.getAllToys ());
         model.addAttribute ("allYarns", this.yarnService.getAllYarns ());
         model.addAttribute ("allAccessories", this.accessoryService.getAllYarns());
         return "admin";
+    }
+    @GetMapping("/about")
+    public String about() {
+        return "about";
     }
 }

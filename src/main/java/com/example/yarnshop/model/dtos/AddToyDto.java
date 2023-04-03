@@ -17,8 +17,11 @@ public class AddToyDto {
     @NotNull
     private String description;
     @NotNull
-
+    @URL
     private String image;
+
+    @Positive
+    private Integer quantity;
 
     public AddToyDto() {
     }
@@ -65,6 +68,15 @@ public class AddToyDto {
 
     public AddToyDto setImage(String image) {
         this.image = image;
+        return this;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public AddToyDto setQuantity(Integer quantity) {
+        this.quantity = quantity;
         return this;
     }
 }

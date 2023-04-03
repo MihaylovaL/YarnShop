@@ -40,6 +40,7 @@ public class AccessoryService {
         accessory.setSize(accessoryDto.getSize());
         accessory.setDescription(accessoryDto.getDescription());
         accessory.setImageUrl(accessoryDto.getImageUrl());
+        accessory.setQuantity(accessoryDto.getQuantity());
 
         accessoryRepository.save(accessory);
     }

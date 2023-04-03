@@ -1,8 +1,13 @@
-package com.example.yarnshop.model.dtos.view;
+package com.example.yarnshop.model.entity;
+
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-
-public class ProductWithInfoDto {
+@Entity
+@Table(name = "bought_products")
+public class BoughtProducts {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
@@ -12,14 +17,14 @@ public class ProductWithInfoDto {
     private Integer quantity;
     private BigDecimal sum;
 
-    public ProductWithInfoDto() {
+    public BoughtProducts() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public ProductWithInfoDto setId(Long id) {
+    public BoughtProducts setId(Long id) {
         this.id = id;
         return this;
     }
@@ -28,7 +33,7 @@ public class ProductWithInfoDto {
         return name;
     }
 
-    public ProductWithInfoDto setName(String name) {
+    public BoughtProducts setName(String name) {
         this.name = name;
         return this;
     }
@@ -37,7 +42,7 @@ public class ProductWithInfoDto {
         return description;
     }
 
-    public ProductWithInfoDto setDescription(String description) {
+    public BoughtProducts setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -46,7 +51,7 @@ public class ProductWithInfoDto {
         return color;
     }
 
-    public ProductWithInfoDto setColor(String color) {
+    public BoughtProducts setColor(String color) {
         this.color = color;
         return this;
     }
@@ -55,7 +60,7 @@ public class ProductWithInfoDto {
         return price;
     }
 
-    public ProductWithInfoDto setPrice(BigDecimal price) {
+    public BoughtProducts setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -64,7 +69,7 @@ public class ProductWithInfoDto {
         return imageUrl;
     }
 
-    public ProductWithInfoDto setImageUrl(String imageUrl) {
+    public BoughtProducts setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
@@ -73,7 +78,7 @@ public class ProductWithInfoDto {
         return quantity;
     }
 
-    public ProductWithInfoDto setQuantity(Integer quantity) {
+    public BoughtProducts setQuantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -82,7 +87,7 @@ public class ProductWithInfoDto {
         return sum;
     }
 
-    public ProductWithInfoDto setSum(BigDecimal sum) {
+    public BoughtProducts setSum(BigDecimal sum) {
         this.sum = sum;
         return this;
     }

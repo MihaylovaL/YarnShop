@@ -15,28 +15,44 @@
     <div id="root-details">
         <form th:action="@{/yarns/info/}"></form>
 
-        <h1 class="text-left text-black" th:text="*{yarnInfo.name}"></h1>
+        <h1 class="text-left text-black" th:text="*{productInfo.name}"></h1>
         <hr class="hr-2 bg-white w-30">
 
         <section id="actor-details" class="m-3">
             <div class="d-flex bg-light">
                 <section id="movie-name-and-photo-left" class="p-1">
                     <div class="text-center m-auto p-lg-4">
-                        <img id="image-actor"  width="150" height="150" th:src="${yarnInfo.imageUrl}">
+                        <img id="image-actor"  width="150" height="150" th:src="${productInfo.imageUrl}">
                     </div>
                 </section>
                 <section id="movie-description-right" class="p-1">
                     <div class="bg-light p-4 col-lg-6">
-                        <h2 class="text-dark h4 " th:text="*{yarnInfo.description}"></h2>
+                        <h2 class="text-dark h4 " th:text="*{productInfo.description}"></h2>
 
-                        <a class="btn btn-primary py-md-3 px-md-5 mt-2"  th:text="|Price: *{yarnInfo.price} BGN.|"></a>
+                        <a class="btn btn-primary py-md-3 px-md-5 mt-2"  th:text="|Price: *{productInfo.price} BGN.|"></a>
 
                         <form th:action="@{/cart/add}" method="POST">
-                            <input type="hidden" name="name" th:value="${yarnInfo.name}"/>
-                            <input type="hidden" name="description" th:value="${yarnInfo.description}"/>
-                            <input type="hidden" name="color" th:value="${yarnInfo.color}"/>
-                            <input type="hidden" name="price" th:value="${yarnInfo.price}"/>
-                            <input type="hidden" name="imageUrl" th:value="${yarnInfo.imageUrl}"/>
+                            <input type="hidden" name="name" th:value="${productInfo.name}"/>
+                            <input type="hidden" name="description" th:value="${productInfo.description}"/>
+                            <input type="hidden" name="color" th:value="${productInfo.color}"/>
+                            <input type="hidden" name="price" th:value="${productInfo.price}"/>
+                            <input type="hidden" name="imageUrl" th:value="${productInfo.imageUrl}"/>
+                            <div class="form-group row"
+                            th:object="${productInfo}">
+                                <label for="quantity" class="col-sm-10 col-form-label">Quantity</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"
+                                           id="quantity"
+                                           name="length"
+                                           th:field="*{quantity}"
+                                           th:errorclass="is-invalid"
+                                           aria-describedby="quantityHelpInline" placeholder="quantity">
+                                    <small id="quantityHelpInline"
+                                           class="invalid-feedback bg-danger text-light rounded">
+                                        Quantity must be positive.
+                                    </small>
+                                </div>
+                            </div>
                             <button class="btn btn-primary py-md-3 px-md-5 mt-2" type="submit">Add to cart</button>
                         </form>
                     </div>

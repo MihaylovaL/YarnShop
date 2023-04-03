@@ -54,6 +54,10 @@ public class UserService {
         successfulLoginProcessor.accept(authentication);
     }
 
+    public YarnShopUser findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new Error("User not found!"));
+    }
+
     public List<YarnShopUser> getAllUsers() {
         return userRepository.findAll();
     }

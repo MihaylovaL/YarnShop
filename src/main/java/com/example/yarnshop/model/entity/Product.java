@@ -20,6 +20,9 @@ public abstract class Product {
     @Positive
     BigDecimal price;
 
+    @Positive
+    private Integer quantity;
+
     public Product() {
     }
 
@@ -65,6 +68,15 @@ public abstract class Product {
 
     public Product setPrice(BigDecimal price) {
         this.price = price;
+        return this;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public Product setQuantity(Integer quantity) {
+        this.quantity = quantity;
         return this;
     }
 }

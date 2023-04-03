@@ -40,6 +40,7 @@ public class YarnService {
         yarn.setPrice(yarnDto.getPrice());
         yarn.setWeight(yarnDto.getWeight());
         yarn.setImageUrl(yarnDto.getImage());
+        yarn.setQuantity(yarnDto.getQuantity());
 
         yarnRepository.save(yarn);
     }

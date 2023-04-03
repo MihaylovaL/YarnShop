@@ -26,6 +26,7 @@ public class ToyService {
         toy.setPrice(addToyDto.getPrice());
         toy.setName(addToyDto.getName());
         toy.setImageUrl(addToyDto.getImage());
+        toy.setQuantity(addToyDto.getQuantity());
 
         toyRepository.save(toy);
     }

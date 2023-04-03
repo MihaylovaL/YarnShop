@@ -70,7 +70,7 @@ public class ToyController {
     }
     @GetMapping("/info/{id}")
     public String yarnInfo (@PathVariable("id") Long id, Model model){
-        model.addAttribute ("yarnInfo", this.toyService.getProductInfoById(id));
+        model.addAttribute ("productInfo", this.toyService.getProductInfoById(id));
         return "product-info";
     }
 
