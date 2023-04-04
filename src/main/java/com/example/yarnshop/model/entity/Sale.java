@@ -14,16 +14,17 @@ public class Sale {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<BoughtProducts> products = new ArrayList<>();
 
-    @ManyToOne
-    private YarnShopUser client;
+    private String username;
     @Column
     private LocalDate dateOfOrder;
 
     @Column(name = "order_sum")
     private BigDecimal orderSum;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private OrderDetails orderDetails;
 
     public Sale() {
     }
@@ -46,12 +47,13 @@ public class Sale {
         return this;
     }
 
-    public YarnShopUser getClient() {
-        return client;
+
+    public String getUsername() {
+        return username;
     }
 
-    public Sale setClient(YarnShopUser client) {
-        this.client = client;
+    public Sale setUsername(String username) {
+        this.username = username;
         return this;
     }
 
@@ -70,6 +72,15 @@ public class Sale {
 
     public Sale setOrderSum(BigDecimal orderSum) {
         this.orderSum = orderSum;
+        return this;
+    }
+
+    public OrderDetails getOrderDetails() {
+        return orderDetails;
+    }
+
+    public Sale setOrderDetails(OrderDetails orderDetails) {
+        this.orderDetails = orderDetails;
         return this;
     }
 }

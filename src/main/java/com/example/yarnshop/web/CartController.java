@@ -1,8 +1,11 @@
 package com.example.yarnshop.web;
 
 import com.example.yarnshop.model.dtos.view.OrderDetailView;
+import com.example.yarnshop.model.dtos.view.OrderDetailsDto;
 import com.example.yarnshop.model.dtos.view.ProductWithInfoDto;
 import com.example.yarnshop.service.ProductService;
+import com.example.yarnshop.service.SaleService;
+import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +22,11 @@ public class CartController {
 
     private List<ProductWithInfoDto> products;
     private BigDecimal totalSumOtItemsInTheCart;
+    private final SaleService saleService;
 
-    public CartController(ProductService productService) {
+    public CartController(ProductService productService, SaleService saleService) {
         this.productService = productService;
+        this.saleService = saleService;
         this.products = new ArrayList<>();
     }
 
@@ -49,23 +54,32 @@ public class CartController {
             products.add(product);
         }
         productService.addProductToCart(product, quantity);
-        totalSumOtItemsInTheCart = products.stream ()
-                .map (ProductWithInfoDto::getSum)
-                .reduce (BigDecimal.ZERO, BigDecimal::add);
+        totalSumOtItemsInTheCart = products.stream()
+                .map(ProductWithInfoDto::getSum)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         return "redirect:/";
     }
 
     @GetMapping("/cart/remove-product-from-list")
     String removeProductFromChoseList(@ModelAttribute("product") ProductWithInfoDto product) {
-        this.products.remove (product);
+        this.products.remove(product);
         return "cart";
     }
 
-    /*@GetMapping("/order/details/{id}")
-    public String placeOrder(@PathVariable("id") Long orderId,
-                             Principal principal, Model model) {
-        model.addAttribute ("orderDetails", this.products.getOrderDetailsById (principal, orderId));
+    @GetMapping("/sale")
+    public String getSale(@ModelAttribute("orderDetails") OrderDetailsDto orderDetails, Model model, Principal principal) {
+        model.addAttribute("products", products);
+        model.addAttribute("totalSum", totalSumOtItemsInTheCart);
+
         return "order-details";
-    }*/
+    }
+
+    @PostMapping("/sale")
+    public String saleProducts(
+            Principal principal, @ModelAttribute("orderDetails") OrderDetailsDto orderDetailsDto,
+            EntityManager em) {
+        saleService.saleProducts(principal, products, orderDetailsDto);
+        return "index";
+    }
 }

@@ -29,7 +29,7 @@
                     <div class="bg-light p-4 col-lg-6">
                         <h2 class="text-dark h4 " th:text="*{productInfo.description}"></h2>
 
-                        <a class="btn btn-primary py-md-3 px-md-5 mt-2"  th:text="|Price: *{productInfo.price} BGN.|"></a>
+                        <h1 class="section-title position-relative text-center mb-5"  th:text="|Price: *{productInfo.price} BGN.|"></h1>
 
                         <form th:action="@{/cart/add}" method="POST">
                             <input type="hidden" name="name" th:value="${productInfo.name}"/>
@@ -53,7 +53,8 @@
                                     </small>
                                 </div>
                             </div>
-                            <button class="btn btn-primary py-md-3 px-md-5 mt-2" type="submit">Add to cart</button>
+                            <div class="button-holder d-flex">
+                                <input type="submit" class="btn btn-info btn-lg " value="Add to cart"/>
                         </form>
                     </div>
                 </section>

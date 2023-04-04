@@ -35,4 +35,8 @@ public class PageController {
     public String about() {
         return "about";
     }
+    @GetMapping("/gallery")
+    public String getGallery(){
+        return "gallery";
+    }
 }

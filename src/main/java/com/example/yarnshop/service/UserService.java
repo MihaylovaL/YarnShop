@@ -57,6 +57,9 @@ public class UserService {
     public YarnShopUser findByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(() -> new Error("User not found!"));
     }
+    public YarnShopUser findById(Long id){
+        return userRepository.findById(id).orElseThrow();
+    }
 
     public List<YarnShopUser> getAllUsers() {
         return userRepository.findAll();

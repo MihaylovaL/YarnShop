@@ -25,7 +25,7 @@
                         <input type="text" class="form-control"
                                id="name"
                                name="name"
-                               th:value="${name}"
+                               th:field="*{name}"
                                th:errorclass="is-invalid"
                                aria-describedby="nameHelpInline" placeholder="name">
                         <small id="nameHelpInline"
@@ -113,7 +113,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-info w-100">Add Toy</button>
+                <button type="submit" class="btn btn-primary mt-2" style="background-color: grey;">Add Toy</button>
             </form>
             <hr class="bg-light">
         </div>
