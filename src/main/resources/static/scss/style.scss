@@ -47,7 +47,7 @@ h6,
 
 .btn.btn-primary,
 .btn.btn-secondary {
-    color: $light;
+
 }
 
 .form-control {
@@ -102,12 +102,12 @@ h6,
 
 @media (min-width: 992px) {
     .navbar-light {
-        border-radius: 60px;
+        border-radius: 40px;
     }
 
     #header-carousel,
     .page-header {
-        margin-top: -45px;
+        margin-top: 0px;
     }
 }
 
@@ -428,6 +428,7 @@ h6,
     background: $primary;
 }
 
+
 .testimonial-carousel .owl-dot::after {
     position: absolute;
     content: "";
@@ -453,4 +454,5 @@ h6,
     .footer .border-right {
         border-right: none !important;
     }
+
 }

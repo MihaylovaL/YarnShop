@@ -37,6 +37,9 @@ public class AddAccessoryDto {
     @URL
     private String imageUrl;
 
+    @Positive
+    private Integer quantity;
+
     public AddAccessoryDto() {
     }
 
@@ -118,6 +121,15 @@ public class AddAccessoryDto {
 
     public AddAccessoryDto setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public AddAccessoryDto setQuantity(Integer quantity) {
+        this.quantity = quantity;
         return this;
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -53,4 +54,14 @@ public class UserService {
         successfulLoginProcessor.accept(authentication);
     }
 
+    public YarnShopUser findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new Error("User not found!"));
+    }
+    public YarnShopUser findById(Long id){
+        return userRepository.findById(id).orElseThrow();
+    }
+
+    public List<YarnShopUser> getAllUsers() {
+        return userRepository.findAll();
+    }
 }

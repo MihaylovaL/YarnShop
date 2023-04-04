@@ -39,6 +39,8 @@ public class AddYarnDto {
     @NotNull
     @URL
     private String image;
+    @Positive
+    private Integer quantity;
 
     public AddYarnDto() {
     }
@@ -121,6 +123,15 @@ public class AddYarnDto {
 
     public AddYarnDto setImage(String image) {
         this.image = image;
+        return this;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public AddYarnDto setQuantity(Integer quantity) {
+        this.quantity = quantity;
         return this;
     }
 }

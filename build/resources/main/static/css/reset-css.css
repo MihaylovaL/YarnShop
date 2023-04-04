@@ -29,7 +29,7 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 body {
-  background-image: url(/images/background.jpg);
+  background-image: url(static/images/background.jpg);
   background-position: center;
   background-attachment: fixed;
   background-size: cover;

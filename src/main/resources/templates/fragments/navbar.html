@@ -1,84 +1,64 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aranea Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+</head>
 <body>
 <div th:fragment="navbar">
-    <header>
-        <nav class="navbar navbar-expand-lg bg-nav rounded">
-
-            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto col-12 justify-content-between">
-
-                        <li class="nav-item" sec:authorize="!isAuthenticated()">
-                            <h1 class="text-center mt-2">
-                                <a class="badge badge-pill badge-dark" th:href="@{/}">Aranea shop</a>
-
-
-                            </h1>
-                        </li>
-                        <li class="nav-item" sec:authorize="hasRole('USER')">
-                            <h1 class="text-center mt-2">
-                                <a  class="badge badge-pill badge-dark" th:href="@{/yarns/all}">Yarns</a>
-                                <a  class="badge badge-pill badge-dark" th:href="@{/toys/all}">Toys</a>
-                                <a  class="badge badge-pill badge-dark" th:href="@{/accessories/all}">Accessories</a>
-
-                            </h1>
-                        </li>
-                        <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                            <h2 class="text-center mt-2">
-                                <a class="badge badge-pill badge-dark" th:href="@{/pages/admins}">Admins</a>
-                                <a class="badge badge-pill badge-dark" th:href="@{/accessories/add}">Add Accessory</a>
-                                <a class="badge badge-pill badge-dark" th:href="@{/toys/add}">Add Toy</a>
-                                <a  class="badge badge-pill badge-dark" th:href="@{/yarns/add}">Add Yarns</a>
-                            </h2>
-                        </li>
-                        <li class="nav-item" sec:authorize="!isAuthenticated()">
-                            <h1 class="text-center mt-2">
-                                <a class="badge badge-pill badge-dark" th:href="@{/users/register}">Register</a>
-                                <a  class="badge badge-pill badge-dark" th:href="@{/yarns/all}">Yarns</a>
-                                <a  class="badge badge-pill badge-dark" th:href="@{/toys/all}">Toys</a>
-                                <a  class="badge badge-pill badge-dark" th:href="@{/accessories/all}">Accessories</a>
-                            </h1>
-                        </li>
-                        <li class="nav-item" sec:authorize="!isAuthenticated()">
-                            <h1 class="text-center mt-2">
-                                <a class="badge badge-pill badge-dark" th:href="@{/users/login}">Login</a>
-                            </h1>
-                        </li>
-                        <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <form class="badge badge-pill badge-dark"
-                                  th:method="POST"
-                                  th:action="@{/logout}"
-                                  sec:authorize="isAuthenticated()">
-
-                                <h1><input class="btn btn-link nav-link text-white px-3 justify-content-around" type="submit"
-                                           value="Logout">
-                                </h1>
-                            </form>
-
-                            <span class="nav-item">
-                        <form th:method="get">
-                            <label class="text-black active h6 align-text-top" th:text="#{navbar_language}"
-                                   for="lang"></label>
-                            <select
-                                    onchange="this.form.submit()"
-                                    id="lang"
-                                    name="lang">
-                                <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
-                                <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
-                            </select>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">Aranea Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/yarns/all}">Yarns</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/toys/all}">Toys</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/accessories/all}">Accessories</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link" th:href="@{/users/register}">Register</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link" th:href="@{/users/login}">Login</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/cart}">Cart</a>
+                    </li>
+                    <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" th:href="@{/pages/admins}">Admins</a></li>
+                            <li><a class="dropdown-item" th:href="@{/accessories/add}">Add Accessory</a></li>
+                            <li><a class="dropdown-item" th:href="@{/toys/add}">Add Toy</a></li>
+                            <li><a class="dropdown-item" th:href="@{/yarns/add}">Add Yarns</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <form th:method="post" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+                            <button class="btn btn-danger" type="submit">Logout</button>
                         </form>
-                    </span>
-                        </li>
-                    </ul>
-                </div>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 </div>
+</header>
 </body>
 </html>
+
