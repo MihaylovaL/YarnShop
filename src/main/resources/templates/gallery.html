@@ -10,12 +10,8 @@
 <body>
 <div th:include="~{fragments/navbar}"></div>
 
-<div class="jumbotron jumbotron-fluid" style="margin-bottom: 90px;"
-     th:action="@{/gallery}">
-    <div class="container text-center py-5">
-        <h1 class="text-white display-3 mt-lg-5">Our art</h1>
-
-    </div>
+<div th:action="@{/gallery}">
+    <h1 class="text-dark display-3 mt-lg-5" style="font-family: 'Brush Script MT'">Our art</h1>
 </div>
 <div class="container-fluid p-0 mb-5 pb-5">
     <div id="header-carousel" style="margin-top: 10px" class="carousel slide" data-interval="2500" data-ride="carousel">
@@ -75,6 +71,6 @@
 </div>
 <div th:insert="~{fragments/footer}"></div>
 <a href="#" class="btn btn-secondary px-2 back-to-top"><i class="fa fa-angle-double-up"></i></a>
-</body>
 
+</body>
 </html>

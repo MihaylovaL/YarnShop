@@ -5,7 +5,8 @@
     <th:block th:replace="~{fragments/head}"></th:block>
 </head>
 
-<body class="order-details">
+<body class="order-details" >
+<div th:include="~{fragments/navbar}"></div>
 
 <div class="container mt-5 p-3 rounded cart">
     <form class="row no-gutters"
@@ -52,13 +53,12 @@
         </div>
     </form>
 
-    <div class="col-md-4" >
-        <div class="payment-info" style="margin: 0 auto; text-align:center; color: grey">
-            <a th:href="@{/sale}" class="btn " style="color: grey;">Confirm order</a>
-        </div>
+    <div class="justify-content-center">
+        <a th:href="@{/sale}" class="btn btn-primary py-md-3 px-md-5 mt-2">Confirm order</a>
     </div>
 </div>
 
-<div th:insert="~{fragments/footer}"></div>
+<div style="vertical-align: bottom" th:insert="~{fragments/footer}"></div>
 </body>
 </html>
+
