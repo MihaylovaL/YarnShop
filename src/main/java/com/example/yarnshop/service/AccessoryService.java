@@ -28,7 +28,7 @@ public class AccessoryService {
     public void addAccessory(AddAccessoryDto accessoryDto) {
         Accessory accessory = new Accessory();
         var country = countryRepository.findById(accessoryDto.getCountryId()).orElseThrow();
-        var category = accessoryCategoryRepository.findYarnCategoryById(accessoryDto.getCategoryId());
+        var category = accessoryCategoryRepository.findAccessoryCategoryById(accessoryDto.getCategoryId());
 
 
         accessory.setCategory(category);
@@ -66,5 +66,7 @@ public class AccessoryService {
     public void deleteProductById(Long productId) {
         this.accessoryRepository.deleteById(productId);
     }
-
+        public List<Accessory> getAllAccessories(){
+        return accessoryRepository.findAll();
+        }
 }

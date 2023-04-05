@@ -62,7 +62,7 @@ public class AccessoryController {
     @GetMapping("/edit/{id}")
     public String editProduct(@PathVariable("id") Long accessoryId, Model model){
         model.addAttribute("accessoryToEdit", this.accessoryService.getProductInfoById(accessoryId));
-        return "product-edit";
+        return "accessory-edit";
     }
 
     @PatchMapping("/edit/{id}")

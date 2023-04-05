@@ -24,7 +24,8 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetailsService;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, CountryService countryRepository, YarnRepository yarnRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder,
+                       UserDetailsService userDetailsService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;

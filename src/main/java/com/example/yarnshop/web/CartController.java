@@ -77,9 +77,10 @@ public class CartController {
 
     @PostMapping("/sale")
     public String saleProducts(
-            Principal principal, @ModelAttribute("orderDetails") OrderDetailsDto orderDetailsDto,
-            EntityManager em) {
+            Principal principal, @ModelAttribute("orderDetails") OrderDetailsDto orderDetailsDto) {
         saleService.saleProducts(principal, products, orderDetailsDto);
+        products.clear();
+        totalSumOtItemsInTheCart = BigDecimal.ZERO;
         return "index";
     }
 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Aranea shop</title>
+    <th:block th:replace="~{fragments/head}"></th:block>
+</head>
+<body>
+
+<main role="main" class="bg-secondary">
+    <div id="container-wrapper">
+        <div class="form-group row" th:object="${accessoryToEdit}">
+        </div>
+        <div class="form-group row">
+            <a th:href="@{/accesories/all}" class="btn btn-primary"><i class="material-icons"></i>
+                <span>Admin</span></a>
+        </div>
+        <div id="root-details">
+
+            <h3 class="text-left text-black" th:text="*{accessoryToEdit.name}"></h3>
+
+            <section class="m-3">
+                <div class="d-flex bg-light">
+                    <section id="movie-name-and-photo-left" class="p-1">
+                        <div class="text-center p-lg-4">
+                            <img id="image-actor" width="200" height="200" th:src="*{accessoryToEdit.imageUrl}">
+                        </div>
+                    </section>
+                    <section id="movie-description-right" class="p-1">
+                        <section>
+                            <div class="bg-light p-4 col-lg-6">
+                                <h6 class="text-dark" th:text="*{accessoryToEdit.description}"></h6>
+                                <a class="btn btn-primary" th:text="|Цена: *{accessoryToEdit.price} лв.|"></a>
+                            </div>
+                        </section>
+                        <section>
+                            <form th:action="@{/accessories/edit/{id} (id = *{id})}"
+                                  th:method="patch"
+                                  th:object="${accessoryToEdit}"
+                                  class=" text-center text-light">
+                                <div class="form-group row">
+                                    <label for="description" class="col-sm-10 col-form-label text-dark">New description</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control"
+                                               id="description"
+                                               name="description"
+                                               th:field="*{description}"
+                                               th:errorclass="is-invalid"
+                                               aria-describedby="descriptionHelpInline" placeholder="Description">
+                                        <small id="descriptionNameHelpInline"
+                                               class="invalid-feedback bg-danger text-light rounded">
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="price" class="col-sm-10 col-form-label text-dark">New price</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control"
+                                               id="price"
+                                               name="price"
+                                               th:field="*{price}"
+                                               th:errorclass="is-invalid"
+                                               aria-describedby="priceHelpInline" placeholder="Price">
+                                        <small id="priceHelpInline"
+                                               class="invalid-feedback bg-danger text-light rounded">
+                                            Enter toy price.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="img" class="col-sm-10 col-form-label text-dark">New imageUrl</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control"
+                                               id="img"
+                                               name="img"
+                                               th:field="*{imageUrl}"
+                                               aria-describedby="imgHelpInline" placeholder="imageUrl">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <input type="submit" class="btn btn-primary py-md-3 px-md-5 mt-2" value="Edit"/>
+                                </div>
+                            </form>
+                        </section>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+</body>
+</html>

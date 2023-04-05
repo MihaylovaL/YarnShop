@@ -47,8 +47,8 @@ public class ToyController {
     }
     @GetMapping("/edit/{id}")
     public String editProduct(@PathVariable("id") Long toyId, Model model){
-        model.addAttribute("productToEdit", this.toyService.getProductInfoById(toyId));
-        return "product-edit";
+        model.addAttribute("toyToEdit", this.toyService.getProductInfoById(toyId));
+        return "toy-edit";
     }
 
     @PatchMapping("/edit/{id}")
