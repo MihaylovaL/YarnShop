@@ -1,5 +1,8 @@
 package com.example.yarnshop.model.dtos.view;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import java.math.BigDecimal;
 
 public class ProductWithInfoDto {
@@ -9,6 +12,8 @@ public class ProductWithInfoDto {
     private String color;
     private BigDecimal price;
     private String imageUrl;
+    @Positive
+    @NotNull
     private Integer quantity;
     private BigDecimal sum;
 

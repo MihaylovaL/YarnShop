@@ -20,7 +20,7 @@
               class=" text-center text-light" enctype="multipart/form-data">
 
             <div class="form-group row justify-content-center">
-                <label for="name" class="col-sm-10 col-form-label">Name</label>
+                <label for="name" class="col-sm-10 col-form-label" th:text="#{home_message_add_name}"></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control"
                            id="name"
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="form-group row justify-content-center">
-                <label for="image" class="col-sm-10 col-form-label">Image</label>
+                <label for="image" class="col-sm-10 col-form-label" th:text="#{home_message_add_image}"></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control"
                            id="image"
@@ -51,7 +51,7 @@
             </div>
             <div class="form-group row justify-content-center">
                 <div class="col-sm-10">
-                    <label for="category" class="col-sm-10 col-form-label">Category</label>
+                    <label for="category" class="col-sm-10 col-form-label" th:text="#{home_message_add_category}"></label>
                     <select th:object="${addYarnDto}" th:field="${addYarnDto.categoryId}"
                             class="form-control"
                             id="category"
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="form-group row justify-content-center">
-                <label for="weight" class="col-sm-10 col-form-label">Weight</label>
+                <label for="weight" class="col-sm-10 col-form-label" th:text="#{home_message_add_weight}"></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control"
                            id="weight"
@@ -79,7 +79,7 @@
                 </div>
             </div>
             <div class="form-group row justify-content-center">
-                    <label for="length" class="col-sm-10 col-form-label">Length</label>
+                    <label for="length" class="col-sm-10 col-form-label" th:text="#{home_message_add_length}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="length"
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             <div class="form-group row justify-content-center">
-                    <label for="quantity" class="col-sm-10 col-form-label">Quantity</label>
+                    <label for="quantity" class="col-sm-10 col-form-label" th:text="#{home_message_add_quantity}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="quantity"
@@ -109,7 +109,7 @@
                     </div>
                 </div>
             <div class="form-group row justify-content-center">
-                    <label for="price" class="col-sm-10 col-form-label">Price</label>
+                    <label for="price" class="col-sm-10 col-form-label" th:text="#{home_message_add_price}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="price"
@@ -125,7 +125,7 @@
                 </div>
             <div class="form-group row justify-content-center">
                     <div class="col-sm-10">
-                        <label for="country" class="col-sm-10 col-form-label">Country</label>
+                        <label for="country" class="col-sm-10 col-form-label" th:text="#{home_message_add_country}"></label>
                         <select th:object="${addYarnDto}" th:field="${addYarnDto.countryId}"
                                 class="form-control"
                                 id="country"
@@ -138,7 +138,7 @@
                     </div>
                 </div>
             <div class="form-group row justify-content-center">
-                    <label for="description" class="col-sm-10 col-form-label">Description</label>
+                    <label for="description" class="col-sm-10 col-form-label" th:text="#{home_message_add_description}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="description"
@@ -153,7 +153,7 @@
                     </div>
                 </div>
             <div class="form-group row justify-content-center">
-                    <label for="color" class="col-sm-10 col-form-label">Color</label>
+                    <label for="color" class="col-sm-10 col-form-label" th:text="#{home_message_add_color}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="color"
@@ -167,7 +167,7 @@
                         </small>
                     </div>
                 </div>
-            <button type="submit" class="btn btn-primary py-md-3 px-md-5 mt-2">Add Yarn</button>
+            <button type="submit" class="btn btn-primary py-md-3 px-md-5 mt-2" th:text="#{home_message_add_yarn}"></button>
             </form>
             <hr class="bg-light">
         </div>

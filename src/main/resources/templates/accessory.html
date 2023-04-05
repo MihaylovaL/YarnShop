@@ -15,7 +15,7 @@
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <h1 class="section-title position-relative text-center mb-5" style="font-family: 'Brush Script MT'">Our accessories</h1>
+                <h1 class="section-title position-relative text-center mb-5" style="font-family: 'Brush Script MT'" th:text="#{home_message_accessories}></h1>
             </div>
         </div>
         <div class="row">
@@ -32,8 +32,8 @@
                     </div>
                     <h5 class="font-weight-bold mb-4"
                         th:text="*{name}"></h5>
-                    <a th:href="@{/accessories/info/{id} (id = *{id})}" class="btn btn-sm btn-secondary mb-1">More details</a>
-                    <a th:href="@{/purchase/{id}(id = *{id})}" class="btn btn-sm btn-secondary">Add to cart</a>
+                    <a th:href="@{/accessories/info/{id} (id = *{id})}" class="btn btn-sm btn-secondary mb-1" th:text="#{home_message_details}></a>
+                    <a th:href="@{/cart/add}" class="btn btn-sm btn-secondary">Add to cart</a>
                 </div>
             </div>
 

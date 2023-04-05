@@ -22,8 +22,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.1.1'
     testImplementation 'junit:junit:4.13.1'
-	testImplementation 'junit:junit:4.13.1'
-    testImplementation 'junit:junit:4.13.1'
     runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'

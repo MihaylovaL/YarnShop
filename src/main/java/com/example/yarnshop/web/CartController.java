@@ -5,10 +5,12 @@ import com.example.yarnshop.model.dtos.view.OrderDetailsDto;
 import com.example.yarnshop.model.dtos.view.ProductWithInfoDto;
 import com.example.yarnshop.service.ProductService;
 import com.example.yarnshop.service.SaleService;
-import jakarta.persistence.EntityManager;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
 import java.security.Principal;
@@ -21,7 +23,7 @@ public class CartController {
     private final ProductService productService;
 
     private List<ProductWithInfoDto> products;
-    private BigDecimal totalSumOtItemsInTheCart;
+    private BigDecimal totalSumOtItemsInTheCart = BigDecimal.ZERO;
     private final SaleService saleService;
 
     public CartController(ProductService productService, SaleService saleService) {
@@ -39,8 +41,21 @@ public class CartController {
     }
 
     @PostMapping("/cart/add")
-    public String addToCart(@ModelAttribute("product") ProductWithInfoDto product, Integer quantity) {
+    public String addToCart(@ModelAttribute("product") @Valid ProductWithInfoDto product, BindingResult bindingResult, RedirectAttributes redirectAttributes, Integer quantity) {
         boolean productAlreadyInCart = false;
+        if(bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("product", product);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.product");
+            if (product.getName().equals("Himalaya")){
+                return "redirect: /yarns/all";
+        }
+            else if(product.getName().equals("hook")){
+                return "redirect: /accessories/all";
+            }
+            else{
+                return "redirect: /toys/all";
+            }
+        }
         for (ProductWithInfoDto productWithInfoDto : products) {
             if (product.getName().equals(productWithInfoDto.getName())) {
                 productWithInfoDto.setQuantity(productWithInfoDto.getQuantity() + quantity);
@@ -63,7 +78,7 @@ public class CartController {
 
     @GetMapping("/cart/remove-product-from-list")
     String removeProductFromChoseList(@ModelAttribute("product") ProductWithInfoDto product) {
-        this.products.remove(product);
+       products.remove(product);
         return "cart";
     }
 

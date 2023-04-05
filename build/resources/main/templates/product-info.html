@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Aranea shop</title>
     <th:block th:replace="~{fragments/head}"></th:block>
@@ -10,59 +10,63 @@
 <div th:insert="~{fragments/navbar}"></div>
 
 <main>
-<div id="container-wrapper">
+    <div id="container-wrapper">
 
-    <div id="root-details">
-        <form th:action="@{/yarns/info/}"></form>
+        <div id="root-details">
+            <form th:action="@{/yarns/info/}"></form>
 
-        <h1 class="text-left text-black" th:text="*{productInfo.name}"></h1>
-        <hr class="hr-2 bg-white w-30">
+            <h1 class="text-left text-black" th:text="*{productInfo.name}"></h1>
+            <hr class="hr-2 bg-white w-30">
 
-        <section id="actor-details" class="m-3">
-            <div class="d-flex bg-light">
-                <section id="movie-name-and-photo-left" class="p-1">
-                    <div class="text-center m-auto p-lg-4">
-                        <img id="image-actor"  width="150" height="150" th:src="${productInfo.imageUrl}">
-                    </div>
-                </section>
-                <section id="movie-description-right" class="p-1">
-                    <div class="bg-light p-4 col-lg-6">
-                        <h2 class="text-dark h4 " th:text="*{productInfo.description}"></h2>
+            <section id="actor-details" class="m-3">
+                <div class="d-flex bg-light">
+                    <section id="movie-name-and-photo-left" class="p-1">
+                        <div class="text-center m-auto p-lg-4">
+                            <img id="image-actor" width="150" height="150" th:src="${productInfo.imageUrl}">
+                        </div>
+                    </section>
+                    <section id="movie-description-right" class="p-1">
+                        <div class="bg-light p-4 col-lg-6">
+                            <h2 class="text-dark h4 " th:text="*{productInfo.description}"></h2>
 
-                        <h1 class="section-title position-relative text-center mb-5"  th:text="|Price: *{productInfo.price} BGN.|"></h1>
+                            <h1 class="section-title position-relative text-center mb-5"
+                                th:text="|Price: *{productInfo.price} BGN.|"></h1>
 
-                        <form th:action="@{/cart/add}" method="POST">
-                            <input type="hidden" name="name" th:value="${productInfo.name}"/>
-                            <input type="hidden" name="description" th:value="${productInfo.description}"/>
-                            <input type="hidden" name="color" th:value="${productInfo.color}"/>
-                            <input type="hidden" name="price" th:value="${productInfo.price}"/>
-                            <input type="hidden" name="imageUrl" th:value="${productInfo.imageUrl}"/>
-                            <div class="form-group row"
-                            th:object="${productInfo}">
-                                <label for="quantity" class="col-sm-10 col-form-label">Quantity</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control"
-                                           id="quantity"
-                                           name="length"
-                                           th:field="*{quantity}"
-                                           th:errorclass="is-invalid"
-                                           aria-describedby="quantityHelpInline" placeholder="quantity">
-                                    <small id="quantityHelpInline"
-                                           class="invalid-feedback bg-danger text-light rounded">
-                                        Quantity must be positive.
-                                    </small>
+                            <form th:action="@{/cart/add}" method="POST">
+                                <input type="hidden" name="name" th:value="${productInfo.name}"/>
+                                <input type="hidden" name="description" th:value="${productInfo.description}"/>
+                                <input type="hidden" name="color" th:value="${productInfo.color}"/>
+                                <input type="hidden" name="price" th:value="${productInfo.price}"/>
+                                <input type="hidden" name="imageUrl" th:value="${productInfo.imageUrl}"/>
+                                <div class="form-group row"
+                                     th:object="${productInfo}">
+                                    <label for="quantity" class="col-sm-10 col-form-label" th:text="#{home_message_add_quantity}"></label>
+                                    <div class="col-sm-10">
+                                        <input id="quantity"
+                                               name="quantity"
+                                               type="text"
+                                               class="form-control"
+                                               placeholder="Quantity"
+                                               th:value="*{quantity}"
+                                               th:errorclass="quantity"/>
+                                        <small id="quantityHelpInline"
+                                               class="invalid-feedback bg-danger text-light rounded"
+                                               th:if="${#fields.hasErrors()}">
+                                            Quantity must be positive.
+                                        </small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="button-holder d-flex">
-                                <input type="submit"  class="btn btn-primary py-md-3 px-md-5 mt-2" value="Add to cart"/>
-                            </div>
-                        </form>
-                    </div>
-                </section>
-            </div>
-        </section>
+                                <div class="button-holder d-flex">
+                                    <input type="submit" class="btn btn-primary py-md-3 px-md-5 mt-2"
+                                           value="Add to cart"/>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </div>
     </div>
-</div>
 </main>
 
 <div th:insert="~{fragments/footer}"></div>

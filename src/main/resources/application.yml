@@ -1,4 +1,11 @@
 spring:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+    messages:
+      encoding: UTF-8
+
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: "jdbc:mysql://localhost:3306/yarn-shop?useSSL=true&createDatabaseIfNotExist=true&serverTimezone=UTC"
