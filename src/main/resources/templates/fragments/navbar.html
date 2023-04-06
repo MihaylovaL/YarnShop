@@ -19,22 +19,26 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                   <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguage" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false" th:text="#{navbar_language}">
-                        </a>-->
-                        <span class="nav-item">
-                        <form th:method="get">
-                            <label class="text-white" th:text="#{navbar_language}" for="lang"></label>
-                            <select
-                                    onchange="this.form.submit()"
-                                    id="lang"
-                                    name="lang">
-                                <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
-                                <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
-                            </select>
-                        </form>
-                    </span>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguage" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        th:text="#{navbar_language}">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownLanguage">
+                            <li>
+                                <form th:method="get">
+                                    <button class="dropdown-item" type="submit" name="lang"
+                                            th:value="en_US"
+                                            th:selected="${#locale.toString()} == 'en_US'">English</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form th:method="get">
+                                    <button class="dropdown-item" type="submit" name="lang"
+                                            th:value="bg_BG"
+                                            th:selected="${#locale.toString()} == 'bg_BG'">Български</button>
+                                </form>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/gallery}" th:text="#{navbar_gallery}"></a>

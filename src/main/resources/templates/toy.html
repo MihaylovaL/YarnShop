@@ -33,7 +33,13 @@
                     <h5 class="font-weight-bold mb-4"
                         th:text="*{name}"></h5>
                     <a th:href="@{/toys/info/{id} (id = *{id})}" class="btn btn-sm btn-secondary mb-1" th:text="#{home_message_details}"></a>
-                    <a th:href="@{/cart/add}" class="btn btn-sm btn-secondary">Add to cart</a>
+                    <form th:action="@{/cart/add}" method="POST">
+                        <input type="hidden" name="name" th:value="${toy.name}"/>
+                        <input type="hidden" name="description" th:value="${toy.description}"/>
+                        <input type="hidden" name="color" th:value="${toy.color}"/>
+                        <input type="hidden" name="price" th:value="${toy.price}"/>
+                        <input type="hidden" name="imageUrl" th:value="${toy.imageUrl}"/>
+                    </form>
                 </div>
             </div>
 

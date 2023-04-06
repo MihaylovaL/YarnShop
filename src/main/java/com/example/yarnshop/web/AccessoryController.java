@@ -48,7 +48,7 @@ public class AccessoryController {
         return "index";
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public String getAllAccessories(Model model) {
         model.addAttribute("accessories", accessoryService.getAllYarns());
         return "accessory";

@@ -10,56 +10,60 @@
 <body>
 <div th:insert="~{fragments/navbar}"></div>
 
-<div th:action="@{/about}" class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+<div th:action="@{/about}" class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 20px;">
     <div class="container text-center py-5">
-        <h1 class="text-white display-3 mt-lg-5">Welcome!</h1>
+        <h1 class="text-white display-3 mt-lg-5" th:text="#{home_carosel_1_1}"></h1>
         <div class="d-inline-flex align-items-center text-white">
-            <p class="m-0"><a class="text-white" th:href="@{/}">Home</a></p>
+            <p class="m-0"><a class="text-white" th:href="@{/}" th:text="#{navbar_index}"></a></p>
             <i class="fa fa-circle px-3"></i>
-            <p class="m-0"><a class="text-white" th:href="@{/toys/all}">Toys</a></p>
+            <p class="m-0"><a class="text-white" th:href="@{/toys/all}" th:text="#{navbar_toys}"></a></p>
         </div>
     </div>
 </div>
-
 <div class="container-fluid py-5">
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-lg-7">
-                <h1 class="section-title position-relative text-center mb-5">
-                    I create magic</h1>
+                <h1 class="section-title position-relative text-center mb-5" th:text="#{home_page_1}"></h1>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4 py-5">
-                <h4 class="font-weight-bold mb-3">You configure your cuddling buddy</h4>
-                <p>This is where I make things for you. Choose:</p>
-                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3"></i>The toy</h5>
-                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3"></i>The size</h5>
-                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3"></i>The yarn</h5>
-                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3"></i>The color</h5>
-                <p>The prices depends on the size and the complexity.
-                    Don't hesitate to contact me.
-                    Check out our toys</p>
-                <a th:href="@{/toys/all}" class="btn btn-primary mt-2">Toys</a>
-
+                <h4 class="font-weight-bold mb-3" th:text="#{home_page_2}"></h4>
+                <p th:text="#{home_page_3}"></p>
+                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3" th:text="#{home_page_4}"></i>
+                </h5>
+                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3" th:text="#{home_page_5}"></i>
+                </h5>
+                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3" th:text="#{home_page_6}"></i>
+                </h5>
+                <h5 class="text-muted mb-3"><i class="fa fa-check text-secondary mr-3" th:text="#{home_page_7}"></i>
+                </h5>
+                <p th:text="#{home_page_8}"></p>
+                <p th:text="#{home_page_9}"></p>
+                <a th:href="@{/contacts}" class="btn btn-primary mt-2" th:text="#{navbar_toys}"></a>
             </div>
-            <div class="row">
+
+            <div class="col-lg-4" style="min-height: 400px;">
+                <div class="position-relative h-100 rounded overflow-hidden">
+                    <img class="position-absolute w-100 h-100" th:src="@{images/about.jpg}" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-4 py-5">
+                <h4 class="font-weight-bold mb-3" th:text="#{home_page_10}"></h4>
+                <h5 class="text-muted mb-3" th:text="#{home_page_11}"></h5>
+            </div>
+        </div>
+        <div class="container py-5">
+            <div class="row justify-content-center">
                 <div class="col-lg-4 py-5">
-                    <h4 class="font-weight-bold mb-3">My passion</h4>
-                    <h5 class="text-muted mb-3">Crocheting is a bit like being a magician - you mumble to yourself
-                        and waggle a stick around and no one
-                        else has a clue how you did it.</h5>
+                    <h4 class="font-weight-bold mb-3" th:text="#{home_page_12}"></h4>
+                    <h5 class="text-muted mb-3" th:text="#{home_page_13}"></h5>
+                    <p th:text="#{home_page_14}"></p>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 py-5">
-            <h4 class="font-weight-bold mb-3">About me</h4>
-            <h5 class="text-muted mb-3">I love finding new hobbies.</h5>
-            <p>ОBut the most pleasure brings me when
-                I see the smile my toys brings ot the kids faces</p>
-        </div>
     </div>
-</div>
-<div th:insert="~{fragments/footer}"></div>
+    <div th:insert="~{fragments/footer}"></div>
 </body>
 </html>
