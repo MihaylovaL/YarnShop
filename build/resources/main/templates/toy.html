@@ -10,39 +10,14 @@
 <body>
 <div th:insert="~{fragments/navbar}"></div>
 
-<!-- Products Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <h1 class="section-title position-relative text-center mb-5" style="font-family: 'Brush Script MT'" th:text="#{home_message_toys}"></h1>
+                <h1 class="section-title position-relative text-center mb-5" style="font-family: 'Brush Script MT'"
+                    th:text="#{home_message_toys}"></h1>
             </div>
         </div>
-<!--        <div class="row">-->
-<!--            <div class="col-lg-3 col-md-6 mb-4 pb-2" th:each="toy : ${toys}"-->
-<!--                 th:object="${toy}">-->
-
-<!--                <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">-->
-<!--                    <div class="bg-primary mt-n5 py-3" style="width: 80px;">-->
-<!--                        <h4 class="font-weight-bold text-white mb-0"-->
-<!--                            th:text="|Price: *{price} BGN.|"></h4>-->
-<!--                    </div>-->
-<!--                    <div class="text-center m-auto p-lg-4">-->
-<!--                        <img id="image-actor"  width="450" height="450" th:src="@{/images/carousel-1.jpg}">-->
-<!--                    </div>-->
-<!--                    <h5 class="font-weight-bold mb-4"-->
-<!--                        th:text="*{name}"></h5>-->
-<!--                    <a th:href="@{/toys/info/{id} (id = *{id})}" class="btn btn-sm btn-secondary mb-1" th:text="#{home_message_details}"></a>-->
-<!--                    <form th:action="@{/cart/add}" method="POST">-->
-<!--                        <input type="hidden" name="name" th:value="${toy.name}"/>-->
-<!--                        <input type="hidden" name="description" th:value="${toy.description}"/>-->
-<!--                        <input type="hidden" name="price" th:value="${toy.price}"/>-->
-<!--                        <input type="hidden" name="imageUrl" th:value="${toy.imageUrl}"/>-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4 pb-2" th:each="toy : ${toys}"
                  th:object="${toy}">
@@ -57,7 +32,8 @@
                     </div>
                     <h5 class="font-weight-bold mb-4"
                         th:text="*{name}"></h5>
-                    <a th:href="@{/toys/info/{id} (id = *{id})}" class="btn btn-sm btn-secondary mb-1" th:text="#{home_message_details}"></a>
+                    <a th:href="@{/toys/info/{id} (id = *{id})}" class="btn btn-sm btn-secondary mb-1"
+                       th:text="#{home_message_details}"></a>
                     <form th:action="@{/cart/add}" method="POST">
                         <input type="hidden" name="name" th:value="${toy.name}"/>
                         <input type="hidden" name="description" th:value="${toy.description}"/>

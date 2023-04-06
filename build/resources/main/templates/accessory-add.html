@@ -8,7 +8,6 @@
 
 <body class="bg-secondary">
 
-<!-- Navbar Start -->
 <div th:insert="~{fragments/navbar}"></div>
 
 <main role="main" class="bg-secondary">
@@ -52,7 +51,8 @@
                 </div>
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-10">
-                        <label for="category" class="col-sm-10 col-form-label" th:text="#{home_message_add_category}"></label>
+                        <label for="category" class="col-sm-10 col-form-label"
+                               th:text="#{home_message_add_category}"></label>
                         <select th:object="${accessoryDto}" th:field="${accessoryDto.categoryId}"
                                 class="form-control"
                                 id="category"
@@ -79,7 +79,8 @@
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
-                    <label for="description" class="col-sm-10 col-form-label" th:text="#{home_message_add_description}"></label>
+                    <label for="description" class="col-sm-10 col-form-label"
+                           th:text="#{home_message_add_description}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="description"
@@ -94,7 +95,8 @@
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
-                    <label for="material" class="col-sm-10 col-form-label" th:text="#{home_message_add_material}"></label>
+                    <label for="material" class="col-sm-10 col-form-label"
+                           th:text="#{home_message_add_material}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="material"
@@ -110,7 +112,8 @@
                 </div>
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-10">
-                        <label for="country" class="col-sm-10 col-form-label" th:text="#{home_message_add_country}"></label>
+                        <label for="country" class="col-sm-10 col-form-label"
+                               th:text="#{home_message_add_country}"></label>
                         <select th:object="${accessoryDto}" th:field="${accessoryDto.countryId}"
                                 class="form-control"
                                 id="country"
@@ -137,7 +140,8 @@
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
-                    <label for="quantity" class="col-sm-10 col-form-label" th:text="#{home_message_add_quantity}"></label>
+                    <label for="quantity" class="col-sm-10 col-form-label"
+                           th:text="#{home_message_add_quantity}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="quantity"
@@ -166,7 +170,8 @@
                         </small>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary py-md-3 px-md-5 mt-2" th:text="#{home_message_add_accessory}"></button>
+                <button type="submit" class="btn btn-primary py-md-3 px-md-5 mt-2"
+                        th:text="#{home_message_add_accessory}"></button>
             </form>
         </div>
     </div>

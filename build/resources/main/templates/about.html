@@ -4,14 +4,43 @@
 <head>
     <title>Aranea shop</title>
     <th:block th:replace="~{fragments/head}"></th:block>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <style>
+        .stickyicon-list {
+            position: fixed;
+            top: 200px;
+            transform: translateY(-50%);
+        }
+        .stickyicon-list a {
+            display: block;
+            text-align: center;
+            padding: 8px;
+            transition: all 0.5s ease;
+            color: white;
+            font-size: 20px;
+        }
+        .stickyicon-list a:hover {
+            color: #000;
+            width:10px;
+        }
+
+        .facebook {
+            background: #3b5998;
+            color: white;
+        }
+        .instagram {
+            background: #3f729b;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
 <div th:insert="~{fragments/navbar}"></div>
 
-<div th:action="@{/about}" class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 20px;">
-    <div class="container text-center py-5">
+<!--<div th:action="@{/about}" class="jumbotron jumbotron-fluid page-header" style="height: 300px;" >
+    <div class="container text-center py-5 ">
         <h1 class="text-white display-3 mt-lg-5" th:text="#{home_carosel_1_1}"></h1>
         <div class="d-inline-flex align-items-center text-white">
             <p class="m-0"><a class="text-white" th:href="@{/}" th:text="#{navbar_index}"></a></p>
@@ -41,7 +70,7 @@
                 </h5>
                 <p th:text="#{home_page_8}"></p>
                 <p th:text="#{home_page_9}"></p>
-                <a th:href="@{/contacts}" class="btn btn-primary mt-2" th:text="#{navbar_toys}"></a>
+                <a th:href="@{/contacts}" class="btn btn-primary mt-2 justify-content-center" th:text="#{navbar_toys}"></a>
             </div>
 
             <div class="col-lg-4" style="min-height: 400px;">
@@ -63,7 +92,32 @@
                 </div>
             </div>
         </div>
+    </div>-->
+<!--</div>-->
+<div class="responsive-container-block bigContainer">
+    <div class="responsive-container-block Container bottomContainer">
+        <div class="ultimateImg">
+            <img class="mainImg" th:src="@{images/about.jpg}">
+        </div>
+        <div class="allText bottomText">
+            <p class="text-blk headingText" th:text="#{home_page_12}"></p>
+            <p class="text-blk subHeadingText" th:text="#{home_page_13}"></p>
+            <p class="text-blk description" th:text="#{home_page_11}"></p>
+            <p class="text-blk description" th:text="#{home_page_9}"></p>
+            <a class="explore" th:text="#{navbar_toys}" th:href="@{/toys/all}">
+            </a>
+            <div class="stickyicon-list">
+            <a href="https://www.facebook.com/profile.php?id=100088685949478" target="_blank" rel="noopener noreferrer" class="facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a style="margin-top: 5px" href="https://www.instagram.com/mal.mihaylova/?fbclid=IwAR3R2C5xmM2R0yUj5HWg04_3R0M5UM7mmECPcuuG-uFg62iSKf9i6fqeJXE"
+               target="_blank" rel="noopener noreferrer" class="instagram">
+                <i class="fa fa-instagram"></i>
+            </a>
+            </div>
+        </div>
     </div>
+</div>
     <div th:insert="~{fragments/footer}"></div>
 </body>
 </html>

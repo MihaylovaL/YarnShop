@@ -33,7 +33,6 @@
                     <td th:text="*{email}"></td>
                     <td th:each="role : *{roles}"
                         th:text="${role.role}"></td>
-
                     <td>
                         <a th:href="@{/users/change-role/{id} (id = *{id})}" class="edit" title="Change role"
                            data-toggle="tooltip">
@@ -155,7 +154,6 @@
                             <td th:text="*{name}"></td>
                             <td th:text="*{description}"></td>
                             <td th:text="*{price}"></td>
-
                             <td>
                                 <a th:href="@{/yarns/edit/{id}(id = *{id})}" class="edit" title="Edit"
                                    data-toggle="tooltip">
