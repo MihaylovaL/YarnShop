@@ -18,7 +18,9 @@ public class YarnService {
     private final CountryRepository countryRepository;
     private final ModelMapper modelMapper;
 
-    public YarnService(YarnRepository yarnRepository, YarnCategoryRepository yarnCategoryRepository, CountryRepository countryRepository, ModelMapper modelMapper) {
+    public YarnService(YarnRepository yarnRepository,
+                       YarnCategoryRepository yarnCategoryRepository,
+                       CountryRepository countryRepository, ModelMapper modelMapper) {
         this.yarnRepository = yarnRepository;
         this.yarnCategoryRepository = yarnCategoryRepository;
         this.countryRepository = countryRepository;
@@ -27,22 +29,26 @@ public class YarnService {
 
     public void addYarn(AddYarnDto yarnDto) {
         Yarn yarn = new Yarn();
-        var country = countryRepository.findById(yarnDto.getCountryId()).orElseThrow();
-        var category = yarnCategoryRepository.findYarnCategoryById(yarnDto.getCategoryId());
+        var countryOptional = countryRepository.findById(yarnDto.getCountryId());
+        if (countryOptional.isPresent()) {
+            var country = countryOptional.get();
+            var category = yarnCategoryRepository.findYarnCategoryById(yarnDto.getCategoryId());
 
+            yarn.setCategory(category);
+            yarn.setName(yarnDto.getName());
+            yarn.setColor(yarnDto.getColor());
+            yarn.setDescription(yarnDto.getDescription());
+            yarn.setCountry(country);
+            yarn.setLength(yarnDto.getLength());
+            yarn.setPrice(yarnDto.getPrice());
+            yarn.setWeight(yarnDto.getWeight());
+            yarn.setImageUrl(yarnDto.getImage());
+            yarn.setQuantity(yarnDto.getQuantity());
 
-        yarn.setCategory(category);
-        yarn.setName(yarnDto.getName());
-        yarn.setColor(yarnDto.getColor());
-        yarn.setDescription(yarnDto.getDescription());
-        yarn.setCountry(country);
-        yarn.setLength(yarnDto.getLength());
-        yarn.setPrice(yarnDto.getPrice());
-        yarn.setWeight(yarnDto.getWeight());
-        yarn.setImageUrl(yarnDto.getImage());
-        yarn.setQuantity(yarnDto.getQuantity());
-
-        yarnRepository.save(yarn);
+            yarnRepository.save(yarn);
+        } else {
+            throw new IllegalArgumentException("Country not found for id: " + yarnDto.getCountryId());
+        }
     }
 
     public List<Yarn> getAllYarns(){

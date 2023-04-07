@@ -12,11 +12,11 @@
     </header>
     <div id="root" class="justify-content-center p-lg-5">
         <section id="error-type">
-            <p class="text-danger h4 col-md text-center ">We are apologizing.</p>
-            <p class="text-danger h4 col-md text-center"> We are working to fix the problem.</p></p>
+            <p class="text-danger h4 col-md text-center" th:text="#{error_messages}"></p>
+            <p class="text-danger h4 col-md text-center" th:text="#{error_messages2}"></p>
         </section>
         <div class="text-center p-lg-3">
-            <a th:href="@{/}" class="btn btn-info">Go Back To Home</a>
+            <a th:href="@{/}" class="btn btn-primary py-md-3 px-md-5 mt-2" th:text="#{navbar_index}"></a>
         </div>
     </div>
 </div>

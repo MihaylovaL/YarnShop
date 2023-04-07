@@ -8,6 +8,7 @@ import com.example.yarnshop.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import java.math.BigDecimal;
 import java.security.Principal;
@@ -30,7 +31,7 @@ public class ProductService {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
     }
-    public List<ProductWithInfoDto> addProductToCart(ProductWithInfoDto product, Integer quantity){
+    public List<ProductWithInfoDto> addProductToCart(ProductWithInfoDto product, Integer quantity) {
         List<ProductWithInfoDto> productsToCart = new ArrayList<>();
 
         product.setSum(product.getPrice ().multiply (BigDecimal.valueOf (product.getQuantity())));

@@ -61,7 +61,7 @@ public class YarnController {
     @GetMapping("/edit/{id}")
     public String editProduct(@PathVariable("id") Long accessoryId, Model model){
         model.addAttribute("yarnToEdit", this.yarnService.getProductInfoById(accessoryId));
-        return "product-edit";
+        return "yarn-edit";
     }
 
     @PatchMapping("/edit/{id}")

@@ -10,45 +10,42 @@
 <body>
 <div th:insert="~{fragments/navbar}"></div>
 
-<!-- Products Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <h1 class="section-title position-relative text-center mb-5">Our accessories</h1>
+                <h1 class="section-title position-relative text-center mb-5" style="font-family: 'Brush Script MT'" th:text="#{home_message_accessories}"></h1>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4 pb-2" th:each="accessory : ${accessories}"
                  th:object="${accessory}">
 
-                <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
-                    <div class="font-weight-bold mb-4">
-                        <h4 class="font-weight-bold text-white mb-0"
-                            th:text="|Price: *{price} BGN.|"></h4>
-                    </div>
+                <div class="section-title position-relative text-center">
                     <div class="text-center m-auto p-lg-4">
-                        <img id="image-actor"  width="80" height="80"  th:src="${accessory.imageUrl}">
+                        <img id="image-actor" width="200" height="200" th:src="${accessory.imageUrl}">
+                    </div>
+                    <div class="section-title position-relative text-center" width="150">
+                        <h4 class="text-center m-auto p-lg-4"
+                            th:text="|Price: *{price} BGN.|"></h4>
                     </div>
                     <h5 class="font-weight-bold mb-4"
                         th:text="*{name}"></h5>
-                    <a th:href="@{/accessories/info/{id} (id = *{id})}" class="btn btn-sm btn-secondary mb-1">More details</a>
-                    <a th:href="@{/purchase/{id}(id = *{id})}" class="btn btn-sm btn-secondary">Add to cart</a>
+                    <a th:href="@{/accessories/info/{id} (id = *{id})}" class="btn btn-sm btn-secondary mb-1" th:text="#{home_message_details}"></a>
+                    <form th:action="@{/cart/add}" method="POST">
+                        <input type="hidden" name="name" th:value="${accessory.name}"/>
+                        <input type="hidden" name="description" th:value="${accessory.description}"/>
+                        <input type="hidden" name="color" th:value="${accessory.material}"/>
+                        <input type="hidden" name="price" th:value="${accessory.price}"/>
+                        <input type="hidden" name="imageUrl" th:value="${accessory.imageUrl}"/>
+                    </form>
                 </div>
             </div>
-
         </div>
-    </div>
 </div>
-<!-- Products End -->
 
-
-<!-- Footer Start -->
 <div th:insert="~{fragments/footer}"></div>
-<!-- Footer End -->
 
-
-<!-- Back to Top -->
 <a href="#" class="btn btn-secondary px-2 back-to-top"><i class="fa fa-angle-double-up"></i></a>
 </body>
 

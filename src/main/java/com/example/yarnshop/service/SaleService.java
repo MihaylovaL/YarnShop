@@ -8,12 +8,14 @@ import com.example.yarnshop.model.entity.Sale;
 import com.example.yarnshop.model.entity.YarnShopUser;
 import com.example.yarnshop.repository.SaleRepository;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,5 +54,18 @@ public class SaleService {
         sale.setOrderSum(sumOfOrder);
 
         saleRepository.saveAndFlush(sale);
+    }
+
+    @Transactional
+    public void deleteOldOrders() {
+        LocalDate date = LocalDate.now ();
+        LocalDate oldDate = date.minus (1, ChronoUnit.YEARS);
+        List<Sale> saleToDelete = this.saleRepository.findSaleByDateOfOrderBefore(oldDate);
+
+        saleToDelete.forEach (sale -> {
+            YarnShopUser user = this.userService.findByUsername(sale.getUsername());
+
+            saleRepository.deleteById(sale.getId());
+        });
     }
 }

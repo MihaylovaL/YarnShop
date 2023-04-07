@@ -8,37 +8,37 @@
 
 <main role="main" class="bg-secondary">
     <div id="container-wrapper">
-        <div class="form-group row" th:object="${yarnToEdit}">
+        <div class="form-group row" th:object="${toyToEdit}">
         </div>
         <div class="form-group row">
-            <a th:href="@{/accessories/all}" class="btn btn-primary"><i class="material-icons"></i>
+            <a th:href="@{/toys/all}" class="btn btn-primary"><i class="material-icons"></i>
                 <span>Admin</span></a>
         </div>
         <div id="root-details">
 
-            <h3 class="text-left text-black" th:text="*{yarnToEdit.name}"></h3>
+            <h3 class="text-left text-black" th:text="*{toyToEdit.name}"></h3>
 
             <section class="m-3">
                 <div class="d-flex bg-light">
                     <section id="movie-name-and-photo-left" class="p-1">
                         <div class="text-center p-lg-4">
-                            <img id="image-actor" width="200" height="200" th:src="*{yarnToEdit.imageUrl}">
+                            <img id="image-actor" width="200" height="200" th:src="*{toyToEdit.imageUrl}">
                         </div>
                     </section>
                     <section id="movie-description-right" class="p-1">
                         <section>
                             <div class="bg-light p-4 col-lg-6">
-                                <h6 class="text-dark" th:text="*{yarnToEdit.description}"></h6>
-                                <a class="btn btn-primary" th:text="|Цена: *{yarnToEdit.price} лв.|"></a>
+                                <h6 class="text-dark" th:text="*{toyToEdit.description}"></h6>
+                                <a class="btn btn-primary" th:text="|Price: *{toyToEdit.price} BGN.|"></a>
                             </div>
                         </section>
                         <section>
-                            <form th:action="@{/accessories/edit/{id} (id = *{id})}"
+                            <form th:action="@{/toys/edit/{id} (id = *{id})}"
                                   th:method="patch"
-                                  th:object="${yarnToEdit}"
+                                  th:object="${toyToEdit}"
                                   class=" text-center text-light">
                                 <div class="form-group row">
-                                    <label for="description" class="col-sm-10 col-form-label text-dark">New description</label>
+                                    <label for="description" class="col-sm-10 col-form-label text-dark" th:text="#{home_edit_description}"></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control"
                                                id="description"
@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="price" class="col-sm-10 col-form-label text-dark">New price</label>
+                                    <label for="price" class="col-sm-10 col-form-label text-dark" th:text="#{home_edit_price}"></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control"
                                                id="price"
@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="img" class="col-sm-10 col-form-label text-dark">New imageUrl</label>
+                                    <label for="img" class="col-sm-10 col-form-label text-dark" th:text="#{home_edit_image}"></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control"
                                                id="img"
@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <input type="submit" class="btn btn-info btn-lg " value="Edit"/>
+                                    <input type="submit" class="btn btn-primary py-md-3 px-md-5 mt-2" value="Edit"/>
                                 </div>
                             </form>
                         </section>

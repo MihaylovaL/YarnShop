@@ -7,21 +7,20 @@
 </head>
 
 <body class="bg-secondary">
-<!-- Topbar End -->
 
 <!-- Navbar Start -->
 <div th:insert="~{fragments/navbar}"></div>
 
 <main role="main" class="bg-secondary">
-    <div class="p-3" style="max-width: 1100px;">
+    <div class="p-3 mx-auto">
     <div class="container bg-blur rounded p-10 mt-10 w-0">
         <form th:method="POST"
               th:action="@{/yarns/add}"
               th:object="${addYarnDto}"
               class=" text-center text-light" enctype="multipart/form-data">
 
-            <div class="form-group row">
-                <label for="name" class="col-sm-10 col-form-label">Name</label>
+            <div class="form-group row justify-content-center">
+                <label for="name" class="col-sm-10 col-form-label" th:text="#{home_message_add_name}"></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control"
                            id="name"
@@ -35,9 +34,8 @@
                     </small>
                 </div>
             </div>
-
-            <div class="form-group row">
-                <label for="image" class="col-sm-10 col-form-label">Image</label>
+            <div class="form-group row justify-content-center">
+                <label for="image" class="col-sm-10 col-form-label" th:text="#{home_message_add_image}"></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control"
                            id="image"
@@ -51,23 +49,22 @@
                     </small>
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="form-group blu-margin">
-                    <label for="category" class="font-weight-bold text-white">Category</label>
+            <div class="form-group row justify-content-center">
+                <div class="col-sm-10">
+                    <label for="category" class="col-sm-10 col-form-label" th:text="#{home_message_add_category}"></label>
                     <select th:object="${addYarnDto}" th:field="${addYarnDto.categoryId}"
                             class="form-control"
-                            id="category" name="category" placeholder="category">
-
+                            id="category"
+                            name="category"
+                            placeholder="category">
                         <option value="0">select category</option>
                         <option th:each="category : ${categories}" th:value="${category.id}"
                                 th:text="${category.category.name()}"></option>
                     </select>
                 </div>
             </div>
-
-            <div class="form-group row">
-                <label for="weight" class="col-sm-10 col-form-label">Weight</label>
+            <div class="form-group row justify-content-center">
+                <label for="weight" class="col-sm-10 col-form-label" th:text="#{home_message_add_weight}"></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control"
                            id="weight"
@@ -81,9 +78,8 @@
                     </small>
                 </div>
             </div>
-
-                <div class="form-group row">
-                    <label for="length" class="col-sm-10 col-form-label">Length</label>
+            <div class="form-group row justify-content-center">
+                    <label for="length" class="col-sm-10 col-form-label" th:text="#{home_message_add_length}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="length"
@@ -97,9 +93,8 @@
                         </small>
                     </div>
                 </div>
-
-                <div class="form-group row">
-                    <label for="quantity" class="col-sm-10 col-form-label">Quantity</label>
+            <div class="form-group row justify-content-center">
+                    <label for="quantity" class="col-sm-10 col-form-label" th:text="#{home_message_add_quantity}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="quantity"
@@ -113,9 +108,8 @@
                         </small>
                     </div>
                 </div>
-
-                <div class="form-group row">
-                    <label for="price" class="col-sm-10 col-form-label">Price</label>
+            <div class="form-group row justify-content-center">
+                    <label for="price" class="col-sm-10 col-form-label" th:text="#{home_message_add_price}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="price"
@@ -129,22 +123,22 @@
                         </small>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="form-group blu-margin">
-                        <label for="country" class="font-weight-bold text-white">Country</label>
+            <div class="form-group row justify-content-center">
+                    <div class="col-sm-10">
+                        <label for="country" class="col-sm-10 col-form-label" th:text="#{home_message_add_country}"></label>
                         <select th:object="${addYarnDto}" th:field="${addYarnDto.countryId}"
                                 class="form-control"
-                                id="country" name="country" placeholder="country">
-
+                                id="country"
+                                name="country"
+                                placeholder="country">
                             <option value="0">select country</option>
                             <option th:each="country : ${countries}" th:value="${country.id}"
                                     th:text="${country.name}"></option>
                         </select>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="description" class="col-sm-10 col-form-label">Description</label>
+            <div class="form-group row justify-content-center">
+                    <label for="description" class="col-sm-10 col-form-label" th:text="#{home_message_add_description}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="description"
@@ -158,8 +152,8 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="color" class="col-sm-10 col-form-label">Color</label>
+            <div class="form-group row justify-content-center">
+                    <label for="color" class="col-sm-10 col-form-label" th:text="#{home_message_add_color}"></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
                                id="color"
@@ -173,7 +167,7 @@
                         </small>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2" style="color: grey;">Add Yarn</button>
+            <button type="submit" class="btn btn-primary py-md-3 px-md-5 mt-2" th:text="#{home_message_add_yarn}"></button>
             </form>
             <hr class="bg-light">
         </div>
